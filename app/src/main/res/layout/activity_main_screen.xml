@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="@string/headline"
+        android:id="@+id/textViewHeadline" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewHeadline"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        tools:text="Description text"
+        android:id="@+id/activity_main_scree_description_textview" />
+
+    <ImageView
+        android:id="@+id/activity_main_screen_imageview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/activity_main_scree_description_textview"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp" />
+
+    <Spinner
+        android:id="@+id/activity_main_screen_spinner"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/activity_main_screen_imageview"
+        android:layout_marginTop="10dp"
+        android:layout_alignLeft="@+id/activity_main_screen_imageview"
+        android:layout_alignStart="@+id/activity_main_screen_imageview"
+        android:entries="@array/social_list"/>
+
+    <TextView
+        android:id="@+id/activity_main_screen_date_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/activity_main_screen_spinner"
+        tools:text="14:50 05/04/2017"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+        android:layout_alignRight="@+id/activity_main_screen_imageview"
+        android:layout_alignEnd="@+id/activity_main_screen_imageview"
+        android:layout_alignBottom="@+id/activity_main_screen_spinner"
+        android:layout_toRightOf="@+id/activity_main_scree_description_textview"
+        android:layout_toEndOf="@+id/activity_main_scree_description_textview" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <Button
+        android:id="@+id/activity_main_screen_skip_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="25dp"
+        android:layout_weight="1"
+        android:text="@string/skip_button" />
+
+    <Button
+        android:id="@+id/activity_registration_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="5dp"
+        android:layout_weight="1"
+        android:text="@string/accept_button" />
+</LinearLayout>
+
+</RelativeLayout>

@@ -36,7 +36,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginStart="25dp"
-        android:text="@string/hint_password"/>
+        android:text="@string/hint_password"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/activity_login_login_button"
