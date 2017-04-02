@@ -11,7 +11,7 @@ import com.qedum.simplyposted.util.Storage;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final int TIME_ACTIVITY_SHOWN = 4 * 1000;
+    private static final int TIME_ACTIVITY_SHOWN = 2 * 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,10 @@ public class SplashActivity extends AppCompatActivity {
 
     private void startContent() {
         Intent intentTarget;
+
+        //TODO: remove the line below
+        Storage.getInstance().setUserLoggedIn(true);
+
         if (Storage.getInstance().isUserLoggedIn()) {
             intentTarget = MainActivity.getLaunchIntent(this);
         } else {
