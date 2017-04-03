@@ -11,9 +11,6 @@ import android.widget.TextView;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.util.Validator;
 
-/**
- * Created by bogdan.aksonenko on 4/3/17.
- */
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private Button btnLogin;
@@ -52,41 +49,45 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_login_btn_login:
-                initLoginButton();
+                tryLogin();
                 break;
             case R.id.activity_login_tv_create_account:
-                initCreateAccount();
+                createAccount();
                 break;
         }
     }
 
     private boolean isFormValid() {
         if (isEditTextEmpty(etEmail)) {
+            etEmail.requestFocus();
             showInformationDialog(R.string.login_email_dialog_title, R.string.login_email_dialog_text);
             return false;
         }
         if (isEditTextEmpty(etPassword)) {
+            etPassword.requestFocus();
             showInformationDialog(R.string.login_password_dialog_title, R.string.login_password_dialog_text);
             return false;
         }
         if (!Validator.isEmailValid(etEmail.getText().toString())) {
+            etEmail.requestFocus();
             showInformationDialog(R.string.wrong_email_format_dialog_title, R.string.wrong_email_format_dialog_text);
             return false;
         }
         if (!Validator.isPasswordValid(etPassword.getText().toString())) {
+            etPassword.requestFocus();
             showInformationDialog(R.string.wrong_password_format_dialog_title, R.string.wrong_password_format_dialog_text);
             return false;
         }
         return true;
     }
 
-    private void initLoginButton() {
+    private void tryLogin() {
         if (isFormValid()) {
             startActivity(MainActivity.getLaunchIntent(this));
         }
     }
 
-    private void initCreateAccount() {
+    private void createAccount() {
         // start registration activity
         startActivity(null, null);
     }
