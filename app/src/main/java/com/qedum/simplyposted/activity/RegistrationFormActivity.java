@@ -64,7 +64,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
             case STEP_SOCIAL_NETWORKS:
                 //TODO: check from storage
-                if(Storage.getInstance().isFbConnected())
+//                if(Storage.getInstance().isFbConnected())
                     //TODO: add ||Storage.isTwitterConnected() )
                 showSettingsFragment();
                 break;
@@ -92,5 +92,4 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
         showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment(), true);
     }
-
 }
