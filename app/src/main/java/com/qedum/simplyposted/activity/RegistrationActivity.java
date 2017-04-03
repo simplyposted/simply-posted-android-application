@@ -103,6 +103,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         }
 
         if (!(etPassword.getText().toString().equals(etConfirmPassword.getText().toString()))) {
+            showInformationDialog(R.string.not_match_passwords_dialog_title, R.string.not_match_passwords__dialog_text);
             return false;
         }
         return true;
