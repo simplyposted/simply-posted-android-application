@@ -92,4 +92,10 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
         showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment(), true);
     }
+
+    @Override
+    public void onBackPressed() {
+        currentStep--;
+        super.onBackPressed();
+    }
 }
