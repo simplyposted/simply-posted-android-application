@@ -6,7 +6,91 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/fragment_registration_step1_text"
+        android:textAlignment="center"
         android:gravity="center"
-        android:text="STEP1" />
+        android:textSize="25sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:text="@string/fragment_registration_social_accounts"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/fragment_registration_step1_tv_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/facebook"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/facebook"
+        android:gravity="center_vertical"
+        android:paddingEnd="80dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="80dp"
+        android:paddingStart="100dp"
+        android:text="@string/fragment_registration_step1_tv_facebook"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/fragment_registration_step1_tv_linkedin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/linkedin"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/linkedin"
+        android:gravity="center_vertical"
+        android:paddingEnd="80dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="80dp"
+        android:paddingStart="100dp"
+        android:text="@string/fragment_registration_step1_tv_linkedin"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/fragment_registration_step1_tv_twitter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/twitter"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/twitter"
+        android:gravity="center_vertical"
+        android:paddingEnd="80dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="80dp"
+        android:paddingStart="100dp"
+        android:text="@string/fragment_registration_step1_tv_twitter"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/fragment_registration_step1_tv_instagram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/instagram"
+        android:drawablePadding="15dp"
+        android:drawableStart="@drawable/instagram"
+        android:gravity="center_vertical"
+        android:paddingEnd="80dp"
+        android:paddingLeft="100dp"
+        android:paddingRight="80dp"
+        android:paddingStart="100dp"
+        android:text="@string/fragment_registration_step1_tv_instagram"
+        android:textSize="25sp" />
+
+
 </LinearLayout>
+

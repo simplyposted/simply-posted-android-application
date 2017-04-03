@@ -2,11 +2,183 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingEnd="25dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingStart="25dp">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/fragment_registration_step2_text"
+        android:textAlignment="center"
         android:gravity="center"
-        android:text="STEP2" />
+        android:textSize="25sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/fragment_registration_step2_et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:hint="@string/fragment_registration_step2_et_name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/ragment_registration_step2_et_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:hint="@string/fragment_registration_step2_et_phone"
+            android:inputType="phone" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/fragment_registration_step2_tone_and_voice"
+        android:textAlignment="center" />
+
+    <SeekBar
+        android:id="@+id/fragment_registration_step2_sb_tone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/fragment_registration_step2_business_details"
+        android:textAlignment="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingEnd="25dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingStart="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fragment_registration_step2_tv_playful" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:text="@string/fragment_registration_step2_tv_corporate"
+            android:textAlignment="textEnd" />
+
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/fragment_registration_step2_sb_playful_corporate"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:max="6"
+        android:progress="3" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingEnd="25dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingStart="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fragment_registration_step2_tv_local" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:text="@string/fragment_registration_step2_tv_general"
+            android:textAlignment="textEnd" />
+
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/fragment_registration_step2_sb_local_general"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:max="6"
+        android:progress="3" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:paddingEnd="25dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingStart="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/fragment_registration_step2_tv_topical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:text="@string/fragment_registration_step2_tv_promotional"
+            android:textAlignment="textEnd" />
+
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/fragment_registration_step2_sb_topical_promotional"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:max="6"
+        android:progress="3" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:hint="@string/fragment_registration_step2_et_additional_info" />
+
+
 </LinearLayout>

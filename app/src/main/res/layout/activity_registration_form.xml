@@ -14,9 +14,11 @@
         android:id="@+id/activity_reg_form_btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:background="@color/colorPrimary"
-        android:text="Next Step"
-        android:textColor="@android:color/white" />
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/activity_registration_form_btn_next_step"/>
 
 </LinearLayout>

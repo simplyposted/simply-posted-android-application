@@ -13,6 +13,7 @@ import com.qedum.simplyposted.fragment.SocialNetworksFragment;
 import com.qedum.simplyposted.util.Storage;
 
 public class RegistrationFormActivity extends BaseActivity implements View.OnClickListener {
+
     private static final int STEP_SOCIAL_NETWORKS = 0;
     private static final int STEP_SETTINGS_FRAGMENT = 1;
     private static final int STEP_PACKAGE_FRAGMENT = 2;
@@ -91,4 +92,5 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
         showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment(), true);
     }
+
 }

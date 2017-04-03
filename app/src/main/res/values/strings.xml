@@ -35,15 +35,45 @@
     <string name="share_text">Check the app at play market: https://play.google.com/store/apps/details?id=</string>
     <string name="no_share_app">There is no app to share the content with</string>
     <string name="login_email_dialog_title">Login field</string>
-    <string name="login_email_dialog_text">Login field is empty</string>
+    <string name="login_email_dialog_text">Please enter your email</string>
     <string name="login_password_dialog_title">Password field</string>
-    <string name="login_password_dialog_text">Password field is empty</string>
+    <string name="login_password_dialog_text">Please enter your password</string>
     <string name="wrong_email_format_dialog_title">Email</string>
-    <string name="wrong_email_format_dialog_text">Wrong email</string>
+    <string name="wrong_email_format_dialog_text">Invalid email</string>
     <string name="wrong_password_format_dialog_title">Password</string>
-    <string name="wrong_password_format_dialog_text">Wrong password</string>
+    <string name="wrong_password_format_dialog_text">Please improve your password</string>
     <string name="registration_confirm_password_dialog_title">Confirm password</string>
     <string name="registration_confirm_password_dialog_text">Wrong confirm password</string>
+    <string name="fragment_registration_step1_text">Step 1/3</string>
+    <string name="fragment_registration_social_accounts">Connect you Social Accounts</string>
+    <string name="fragment_registration_step1_next_button">NEXT STEP</string>
+    <string name="fragment_registration_step1_tv_facebook">FaceBook</string>
+    <string name="fragment_registration_step1_tv_linkedin">LinkedIn</string>
+    <string name="fragment_registration_step1_tv_twitter">Twitter</string>
+    <string name="fragment_registration_step1_tv_instagram">Instagram</string>
+    <string name="fragment_registration_step2_text">Step 2/3</string>
+    <string name="fragment_registration_step2_et_name">Name</string>
+    <string name="fragment_registration_step2_et_phone">Phone</string>
+    <string name="fragment_registration_step2_tone_and_voice">Tone and Voice</string>
+    <string name="fragment_registration_step2_business_details">Business details</string>
+    <string name="fragment_registration_step2_tv_playful">Playful</string>
+    <string name="fragment_registration_step2_tv_corporate">Corporate</string>
+    <string name="fragment_registration_step2_tv_local">Local</string>
+    <string name="fragment_registration_step2_tv_general">General</string>
+    <string name="fragment_registration_step2_tv_topical">Topical</string>
+    <string name="fragment_registration_step2_tv_promotional">Promotional</string>
+    <string name="fragment_registration_step2_et_additional_info">Additional information</string>
+    <string name="not_match_passwords_dialog_title">Passwords</string>
+    <string name="not_match_passwords__dialog_text">Passwords don\'t match</string>
+    <string name="activity_registration_form_btn_next_step">Next Step</string>
+    <string name="fragment_registration_step3_text">Step 3/3</string>
+    <string name="fragment_registration_step3_chk_entry">Entry</string>
+    <string name="fragment_registration_step3_descr">Some description</string>
+    <string name="fragment_registration_step3_chk_basic">Basic</string>
+    <string name="fragment_registration_step3_chk_pro">Pro</string>
+
+    <!-- fragment step 1 -->
+
 
 
 </resources>
