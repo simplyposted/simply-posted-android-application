@@ -1,20 +1,24 @@
 <resources>
     <string name="app_name">Simplyposted</string>
-    <string name="login">Login</string>
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
+
+    <!-- login activity -->
+    <string name="activity_login_tv_login">Login</string>
+    <string name="activity_login_bt_login">Login</string>
+    <string name="activity_login_hint_email">Email</string>
+    <string name="activity_login_hint_password">Password</string>
+    <string name="activity_login_not_registered">Not registered?</string>
+    <string name="activity_login_create_account">Create account</string>
+
+
     <string name="registration">Registration</string>
     <string name="hint_confirm_password">Confirm password</string>
     <string name="ok_button">Ok</string>
     <string name="cancel_button">Cancel</string>
-    <string name="not_registered">Not registered?</string>
-    <string name="create_account">Create account</string>
-    <string name="headline">Headline</string>
-    <string name="skip_button">Skip</string>
-    <string name="accept_button">Accept</string>
 
-
-
+    <!-- item post main -->
+    <string name="item_post_main_headline">Headline</string>
+    <string name="item_post_main_skip_button">Skip</string>
+    <string name="item_post_main_accept_button">Accept</string>
     <string-array name="social_list">
         <item>FB</item>
         <item>Ln</item>
@@ -28,5 +32,14 @@
     <string name="menu_action_share">Share</string>
     <string name="share_text">Check the app at play market: https://play.google.com/store/apps/details?id=</string>
     <string name="no_share_app">There is no app to share the content with</string>
+    <string name="login_email_dialog_title">Login field</string>
+    <string name="login_email_dialog_text">Login field is empty</string>
+    <string name="login_password_dialog_title">Password field</string>
+    <string name="login_password_dialog_text">Password field is empty</string>
+    <string name="wrong_email_format_dialog_title">Email</string>
+    <string name="wrong_email_format_dialog_text">Wrong email</string>
+    <string name="wrong_password_format_dialog_title">Password</string>
+    <string name="wrong_password_format_dialog_text">Wrong password</string>
+
 
 </resources>
