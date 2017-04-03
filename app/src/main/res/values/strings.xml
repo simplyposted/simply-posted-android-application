@@ -66,6 +66,11 @@
     <string name="not_match_passwords_dialog_title">Passwords</string>
     <string name="not_match_passwords__dialog_text">Passwords don\'t match</string>
     <string name="activity_registration_form_btn_next_step">Next Step</string>
+    <string name="fragment_registration_step3_text">Step 3/3</string>
+    <string name="fragment_registration_step3_chk_entry">Entry</string>
+    <string name="fragment_registration_step3_descr">Some description</string>
+    <string name="fragment_registration_step3_chk_basic">Basic</string>
+    <string name="fragment_registration_step3_chk_pro">Pro</string>
 
     <!-- fragment step 1 -->
 

@@ -7,10 +7,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:text="@string/activity_registration_registration_text"
         android:textAlignment="center"
+        android:gravity="center"
         android:textSize="25sp" />
 
     <EditText

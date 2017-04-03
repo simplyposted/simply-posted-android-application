@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.Button;
 
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.fragment.ChoosePackageFragment;
 import com.qedum.simplyposted.fragment.SettingsInformationFragment;
 import com.qedum.simplyposted.fragment.SocialNetworksFragment;
 
 public class RegistrationFormActivity extends BaseActivity implements View.OnClickListener {
     private static final int SOCIAL_NETWORKS = 0;
     private static final int SETTINGS_FRAGMENT = 1;
+    private static final int PACKAGE_FRAGMENT = 2;
     private Button btnNext;
     private int currentStep;
 
@@ -63,12 +65,19 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 //                if( connected )
                 break;
             case SETTINGS_FRAGMENT:
-
+                currentStep = PACKAGE_FRAGMENT;
+                showPackageFragment();
+                //TODO: check from storage
+//                if( connected )
                 break;
         }
     }
 
     private void showSettingsFragment() {
         showFragment(R.id.activity_reg_form_fl_content, new SettingsInformationFragment());
+    }
+
+    private void showPackageFragment() {
+        showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment());
     }
 }
