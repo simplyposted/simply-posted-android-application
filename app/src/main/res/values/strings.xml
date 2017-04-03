@@ -9,11 +9,11 @@
     <string name="activity_login_not_registered">Not registered?</string>
     <string name="activity_login_create_account">Create account</string>
 
-
-    <string name="registration">Registration</string>
-    <string name="hint_confirm_password">Confirm password</string>
-    <string name="ok_button">Ok</string>
-    <string name="cancel_button">Cancel</string>
+    <!-- registration activity -->
+    <string name="activity_registration_registration_text">Registration</string>
+    <string name="activity_registration_hint_confirm_password">Confirm password</string>
+    <string name="activity_registration_ok_button">OK</string>
+    <string name="activity_registration_cancel_button">Cancel</string>
 
     <!-- item post main -->
     <string name="item_post_main_headline">Headline</string>
@@ -42,6 +42,8 @@
     <string name="wrong_email_format_dialog_text">Wrong email</string>
     <string name="wrong_password_format_dialog_title">Password</string>
     <string name="wrong_password_format_dialog_text">Wrong password</string>
+    <string name="registration_confirm_password_dialog_title">Confirm password</string>
+    <string name="registration_confirm_password_dialog_text">Wrong confirm password</string>
 
 
 </resources>
