@@ -1,11 +1,28 @@
 package com.qedum.simplyposted.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * Created by bogdan.aksonenko on 4/3/17.
  */
 public class Post {
+    //TODO: remove hardcoded images
+    List<String> images = new ArrayList<>();
+
+    {
+        images.add("http://cdn.cavemancircus.com//wp-content/uploads/images/2015/june/pretty_girls_3/pretty_girls_15.jpg");
+        images.add("https://pbs.twimg.com/profile_images/572905100960485376/GK09QnNG.jpeg");
+        images.add("http://i.imgur.com/N6SaAlZ.jpg");
+        images.add("http://cdn.cavemancircus.com//wp-content/uploads/images/2015/january/pretty_girls_2/pretty_girls_5.jpg");
+        images.add("http://cdn.cavemancircus.com//wp-content/uploads/images/2015/june/pretty_girls_3/pretty_girls_20.jpg");
+        images.add("http://cdn.cavemancircus.com//wp-content/uploads/images/2015/march/pretty_girls_2/pretty_girls_12.jpg");
+        images.add("https://s-media-cache-ak0.pinimg.com/736x/de/87/7b/de877bcccc2295a58fe8758fee0ebc7d.jpg");
+        images.add("https://scontent.cdninstagram.com/hphotos-xpf1/t51.2885-15/e15/10986280_404995676329336_1177563605_n.jpg");
+    }
+
     private String title;
     private String link;
     private String imageUrl;
@@ -46,6 +63,10 @@ public class Post {
     }
 
     public Post() {
+        int randomNumber = new Random().nextInt(images.size());
+        setImageUrl(images.get(randomNumber));
+        setLink("link");
+        setTitle("Random headline " + randomNumber);
     }
 
     public Post(String title, String link, String imageUrl, Date date) {

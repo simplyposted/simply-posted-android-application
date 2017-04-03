@@ -3,6 +3,7 @@ package com.qedum.simplyposted.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -17,7 +18,6 @@ import java.util.ArrayList;
 /**
  * Created by bogdan.aksonenko on 4/3/17.
  */
-
 public class PostsActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
@@ -44,8 +44,16 @@ public class PostsActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        mAdapter = new PostRecyclerAdapter(new ArrayList<Post>());
+        mAdapter = new PostRecyclerAdapter(getDummyItems());
         mRecyclerView.setAdapter(mAdapter);
     }
 
+    @NonNull
+    private ArrayList<Post> getDummyItems() {
+        ArrayList<Post> items = new ArrayList<>();
+        items.add(new Post());
+        items.add(new Post());
+        items.add(new Post());
+        return items;
+    }
 }

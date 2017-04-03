@@ -10,7 +10,6 @@ import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.fragment.ChoosePackageFragment;
 import com.qedum.simplyposted.fragment.SettingsInformationFragment;
 import com.qedum.simplyposted.fragment.SocialNetworksFragment;
-import com.qedum.simplyposted.util.Storage;
 
 public class RegistrationFormActivity extends BaseActivity implements View.OnClickListener {
 

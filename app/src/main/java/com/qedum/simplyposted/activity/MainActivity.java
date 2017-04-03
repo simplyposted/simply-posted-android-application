@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
         for (int i = 0; i < 10; i++) {
-            mSwipeView.addView(new PostCard(this, new Post(), mSwipeView));
+            mSwipeView.addView(new PostCard(new Post(), mSwipeView));
         }
     }
 
