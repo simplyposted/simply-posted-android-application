@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -68,7 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(isHomeAsUpEnabledShown());
     }
 
-    protected boolean isHomeAsUpEnabledShown(){
+    protected boolean isHomeAsUpEnabledShown() {
         return true;
     }
 
@@ -90,6 +92,12 @@ public abstract class BaseActivity extends AppCompatActivity {
             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
             v.clearFocus();
         }
+    }
+
+    protected void showFragment(int contentId, Fragment fragment) {
+        FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
+        fragTrans.replace(contentId, fragment);
+        fragTrans.commit();
     }
 
     protected boolean isEditTextEmpty(EditText editText) {

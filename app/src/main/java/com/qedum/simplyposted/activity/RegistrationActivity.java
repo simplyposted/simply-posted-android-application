@@ -56,10 +56,9 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     }
 
 
-
     private void tryOkBtn() {
         if (isFormValid()) {
-
+            startActivity(RegistrationFormActivity.getLaunchIntent(this));
         }
     }
 
