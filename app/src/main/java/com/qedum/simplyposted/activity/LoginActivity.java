@@ -88,7 +88,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void createAccount() {
-        // start registration activity
-        startActivity(null, null);
+        startActivity(RegistrationActivity.getLaunchIntent(this));
     }
 }
