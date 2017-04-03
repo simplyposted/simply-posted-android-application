@@ -12,7 +12,8 @@ import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.model.Post;
-import com.qedum.simplyposted.model.TinderCard;
+import com.qedum.simplyposted.model.PostCard;
+import com.qedum.simplyposted.util.Storage;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
 
         for (int i = 0; i < 10; i++) {
-            mSwipeView.addView(new TinderCard(this, new Post(), mSwipeView));
+            mSwipeView.addView(new PostCard(this, new Post(), mSwipeView));
         }
     }
 
@@ -100,6 +101,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 share();
                 return true;
 
+            case R.id.action_logout:
+                logout();
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -119,5 +124,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(this, R.string.no_share_app, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void logout() {
+        Storage.getInstance().clearAll();
+        startActivity(LoginActivity.getLaunchIntent(this));
+        finish();
     }
 }

@@ -1,7 +1,5 @@
 package com.qedum.simplyposted.util;
 
-import org.json.JSONObject;
-
 import java.util.regex.Pattern;
 
 public class Validator {
@@ -14,11 +12,5 @@ public class Validator {
 
     public static boolean isPasswordValid(String password) {
         return (password.length() > 7);
-    }
-
-
-    public static boolean isJsonFieldNull(JSONObject object, String name) {
-        Object value = object.opt(name);
-        return value == null || value == JSONObject.NULL || "null".equals(value);
     }
 }

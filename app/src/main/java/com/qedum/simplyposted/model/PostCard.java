@@ -17,7 +17,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.qedum.simplyposted.R;
 
 @Layout(R.layout.item_post_card_view)
-public class TinderCard {
+public class PostCard {
     @View(R.id.profileImageView)
     private ImageView profileImageView;
 
@@ -31,7 +31,7 @@ public class TinderCard {
     private Context mContext;
     private SwipePlaceHolderView mSwipeView;
 
-    public TinderCard(Context context, Post profile, SwipePlaceHolderView swipeView) {
+    public PostCard(Context context, Post profile, SwipePlaceHolderView swipeView) {
         mContext = context;
         mProfile = profile;
         mSwipeView = swipeView;
@@ -70,4 +70,6 @@ public class TinderCard {
     private void onSwipeOutState(){
         Log.d("EVENT", "onSwipeOutState");
     }
+
+    //https://blog.mindorks.com/android-tinder-swipe-view-example-3eca9b0d4794
 }
