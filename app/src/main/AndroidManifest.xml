@@ -32,6 +32,9 @@
         <activity
             android:name=".activity.PostsActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RegistrationActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

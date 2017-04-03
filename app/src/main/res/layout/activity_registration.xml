@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:layout_marginTop="25dp"
-        android:text="@string/registration"
+        android:text="@string/activity_registration_registration_text"
         android:textAlignment="center"
         android:textSize="25sp" />
 
@@ -34,7 +34,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginStart="25dp"
-        android:text="@string/activity_login_hint_password" />
+        android:hint="@string/activity_login_hint_password"
+        android:inputType="textPassword"/>
 
     <EditText
         android:id="@+id/activity_registration_password_confirm"
@@ -45,7 +46,8 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginStart="25dp"
-        android:text="@string/hint_confirm_password" />
+        android:hint="@string/activity_registration_hint_confirm_password"
+        android:inputType="textPassword"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +55,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/activity_registration_ok_button"
+            android:id="@+id/activity_registration_btn_ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -61,10 +63,10 @@
             android:layout_marginRight="5dp"
             android:layout_marginStart="25dp"
             android:layout_weight="1"
-            android:text="@string/ok_button" />
+            android:text="@string/activity_registration_ok_button" />
 
         <Button
-            android:id="@+id/item_post_main_btn_cancel"
+            android:id="@+id/activity_registration_btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="25dp"
@@ -72,7 +74,7 @@
             android:layout_marginRight="25dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:text="@string/cancel_button" />
+            android:text="@string/activity_registration_cancel_button" />
 
     </LinearLayout>
 
