@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -90,6 +91,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             v.clearFocus();
         }
     }
+
+    protected boolean isEditTextEmpty(EditText editText) {
+        return editText.getText().toString().trim().length() == 0;
+    }
+
 
     public void showWaitingDialog(String waitingMessage, boolean cancelable) {
         if (progressDialog == null) {
