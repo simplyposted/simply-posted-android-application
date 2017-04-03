@@ -31,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
         Intent intentTarget;
 
         //TODO: remove the line below
-        Storage.getInstance().setUserLoggedIn(false);
+        Storage.getInstance().setUserLoggedIn(true);
 
         if (Storage.getInstance().isUserLoggedIn()) {
             intentTarget = MainActivity.getLaunchIntent(this);

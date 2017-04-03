@@ -2,13 +2,21 @@ package com.qedum.simplyposted.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import com.mindorks.placeholderview.SwipeDecor;
+import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.model.Post;
+import com.qedum.simplyposted.model.TinderCard;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+    private SwipePlaceHolderView mSwipeView;
 
     public static Intent getLaunchIntent(Context context) {
         return new Intent(context, MainActivity.class);
@@ -19,7 +27,51 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
-    protected boolean isHomeAsUpEnabledShown(){
+    @Override
+    protected void attachActivityViews(Bundle savedInstanceState) {
+        mSwipeView = (SwipePlaceHolderView) findViewById(R.id.swipeView);
+    }
+
+    @Override
+    protected void initActivityViews(Bundle savedInstanceState) {
+        findViewById(R.id.item_post_main_btn_skip).setOnClickListener(this);
+        findViewById(R.id.item_post_main_btn_accept).setOnClickListener(this);
+
+        mSwipeView.getBuilder()
+                .setDisplayViewCount(2)
+                .setSwipeDecor(new SwipeDecor()
+//                        .setPaddingTop(20)
+                        .setRelativeScale(0.01f)
+                        .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
+                        .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+
+
+        for (int i = 0; i < 10; i++) {
+            mSwipeView.addView(new TinderCard(this, new Post(), mSwipeView));
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.item_post_main_btn_skip:
+                rejectPost();
+                break;
+            case R.id.item_post_main_btn_accept:
+                acceptPost();
+                break;
+        }
+    }
+
+    private void rejectPost() {
+        mSwipeView.doSwipe(false);
+    }
+
+    private void acceptPost() {
+        mSwipeView.doSwipe(true);
+    }
+
+    protected boolean isHomeAsUpEnabledShown() {
         return false;
     }
 
@@ -28,7 +80,6 @@ public class MainActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
