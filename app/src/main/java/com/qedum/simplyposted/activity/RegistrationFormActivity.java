@@ -10,6 +10,7 @@ import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.fragment.ChoosePackageFragment;
 import com.qedum.simplyposted.fragment.SettingsInformationFragment;
 import com.qedum.simplyposted.fragment.SocialNetworksFragment;
+import com.qedum.simplyposted.util.Storage;
 
 public class RegistrationFormActivity extends BaseActivity implements View.OnClickListener {
     private static final int STEP_SOCIAL_NETWORKS = 0;
@@ -62,7 +63,8 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
             case STEP_SOCIAL_NETWORKS:
                 //TODO: check from storage
-                //if( connected )
+                if(Storage.getInstance().isFbConnected())
+                    //TODO: add ||Storage.isTwitterConnected() )
                 showSettingsFragment();
                 break;
 

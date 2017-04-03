@@ -8,6 +8,7 @@ import com.qedum.simplyposted.SpApp;
 public class Storage {
     private static final String PREFERENCES_NAME = "com.qedum.simplyposted.util.Storage";
     private static final String LOGGED_IN_KEY = "logged_in";
+    private static final String FB_CONNECTED_KEY = "FB_CONNECTED_KEY";
 
     private static final String EMAIL_KEY = "email_key";
     private static final String PASSWORD_KEY = "password_key";
@@ -43,12 +44,20 @@ public class Storage {
         return get(key, false);
     }
 
+    public boolean isUserLoggedIn() {
+        return getBoolean(LOGGED_IN_KEY);
+    }
+
     public void setUserLoggedIn(boolean isLoggedIn) {
         put(LOGGED_IN_KEY, isLoggedIn);
     }
 
-    public boolean isUserLoggedIn() {
-        return getBoolean(LOGGED_IN_KEY);
+    public boolean isFbConnected() {
+        return getBoolean(FB_CONNECTED_KEY);
+    }
+
+    public void setFbConnected(boolean value) {
+        put(LOGGED_IN_KEY, value);
     }
 
 //    public void saveUser(User user) {
