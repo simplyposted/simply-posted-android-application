@@ -179,16 +179,5 @@
         android:layout_marginBottom="10dp"
         android:hint="@string/fragment_registration_step2_et_additional_info" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/fragment_registration_step2_btn_next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="@string/fragment_registration_step1_next_button"
-            android:layout_marginBottom="10dp"/>
-    </RelativeLayout>
 </LinearLayout>

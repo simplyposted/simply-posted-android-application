@@ -16,14 +16,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_marginBottom="25dp"
         android:text="@string/fragment_registration_social_accounts"
         android:textAlignment="center"
         android:textSize="25sp" />
 
     <TextView
-        android:paddingLeft="80dp"
-        android:paddingStart="80dp"
+        android:paddingLeft="100dp"
+        android:paddingStart="100dp"
         android:paddingRight="80dp"
         android:paddingEnd="80dp"
         android:id="@+id/fragment_registration_step1_tv_facebook"
@@ -31,29 +31,29 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@mipmap/ic_launcher_round"
-        android:drawableStart="@mipmap/ic_launcher_round"
+        android:drawableLeft="@drawable/facebook"
+        android:drawableStart="@drawable/facebook"
         android:gravity="center_vertical"
         android:text="@string/fragment_registration_step1_tv_facebook"
-        android:textAlignment="center"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:drawablePadding="15dp"/>
 
     <TextView
         android:id="@+id/fragment_registration_step1_tv_linkedin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
-        android:paddingLeft="80dp"
-        android:paddingStart="80dp"
+        android:paddingLeft="100dp"
+        android:paddingStart="100dp"
         android:paddingRight="80dp"
         android:paddingEnd="80dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@mipmap/ic_launcher_round"
-        android:drawableStart="@mipmap/ic_launcher_round"
+        android:drawableLeft="@drawable/linkedin"
+        android:drawableStart="@drawable/linkedin"
         android:gravity="center_vertical"
         android:text="@string/fragment_registration_step1_tv_linkedin"
-        android:textAlignment="center"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:drawablePadding="15dp"/>
 
     <TextView
         android:id="@+id/fragment_registration_step1_tv_twitter"
@@ -61,48 +61,34 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@mipmap/ic_launcher_round"
-        android:drawableStart="@mipmap/ic_launcher_round"
+        android:drawableLeft="@drawable/twitter"
+        android:drawableStart="@drawable/twitter"
         android:gravity="center_vertical"
-        android:paddingLeft="80dp"
-        android:paddingStart="80dp"
+        android:paddingLeft="100dp"
+        android:paddingStart="100dp"
         android:paddingRight="80dp"
         android:paddingEnd="80dp"
         android:text="@string/fragment_registration_step1_tv_twitter"
-        android:textAlignment="center"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:drawablePadding="15dp"/>
 
     <TextView
         android:id="@+id/fragment_registration_step1_tv_instagram"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
-        android:paddingLeft="80dp"
-        android:paddingStart="80dp"
+        android:paddingLeft="100dp"
+        android:paddingStart="100dp"
         android:paddingRight="80dp"
         android:paddingEnd="80dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@mipmap/ic_launcher_round"
-        android:drawableStart="@mipmap/ic_launcher_round"
+        android:drawableLeft="@drawable/instagram"
+        android:drawableStart="@drawable/instagram"
         android:gravity="center_vertical"
         android:text="@string/fragment_registration_step1_tv_instagram"
-        android:textAlignment="center"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:drawablePadding="15dp"/>
 
-
-
-    <Button
-        android:id="@+id/fragment_registration_step1_btn_next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true"
-        android:text="@string/fragment_registration_step1_next_button" />
-  
 
 </LinearLayout>
 
