@@ -38,9 +38,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
 
-    protected abstract void attachFragmentViews(View view);
+    protected void attachFragmentViews(View view) {
+    }
 
-    protected abstract void initFragmentViews();
+    protected void initFragmentViews() {
+    }
 
     public BaseActivity getBaseActivity() {
         BaseActivity bActivity = null;

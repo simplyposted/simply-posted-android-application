@@ -18,7 +18,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private Button btnOk;
     private Button btnCancel;
 
-
     public static Intent getLaunchIntent(Context context) {
         return new Intent(context, RegistrationActivity.class);
     }
@@ -54,7 +53,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 break;
         }
     }
-
 
     private void tryOkBtn() {
         if (isFormValid()) {

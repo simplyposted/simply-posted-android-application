@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.fragment.ChoosePackageFragment;
 import com.qedum.simplyposted.fragment.SettingsInformationFragment;
 import com.qedum.simplyposted.fragment.SocialNetworksFragment;
 
 public class RegistrationFormActivity extends BaseActivity implements View.OnClickListener {
-    private static final int SOCIAL_NETWORKS = 0;
-    private static final int SETTINGS_FRAGMENT = 1;
+    private static final int STEP_SOCIAL_NETWORKS = 0;
+    private static final int STEP_SETTINGS_FRAGMENT = 1;
+    private static final int STEP_PACKAGE_FRAGMENT = 2;
+
     private Button btnNext;
     private int currentStep;
 
@@ -35,13 +38,13 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     private void showSocialNetworksFragment() {
         SocialNetworksFragment fragment = new SocialNetworksFragment();
 
-        showFragment(R.id.activity_reg_form_fl_content, fragment);
+        showFragment(R.id.activity_reg_form_fl_content, fragment, false);
     }
 
 
     @Override
     protected void initActivityViews(Bundle savedInstanceState) {
-        currentStep = SOCIAL_NETWORKS;
+        currentStep = STEP_SOCIAL_NETWORKS;
         btnNext.setOnClickListener(this);
     }
 
@@ -56,19 +59,34 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
     private void tryShowNextScreen() {
         switch (currentStep) {
-            case SOCIAL_NETWORKS:
-                currentStep = SETTINGS_FRAGMENT;
-                showSettingsFragment();
-                //TODO: check from storage
-//                if( connected )
-                break;
-            case SETTINGS_FRAGMENT:
 
+            case STEP_SOCIAL_NETWORKS:
+                //TODO: check from storage
+                //if( connected )
+                showSettingsFragment();
+                break;
+
+            case STEP_SETTINGS_FRAGMENT:
+                //TODO: check from storage
+                showChoosePackageFragment();
+                break;
+
+            case STEP_PACKAGE_FRAGMENT:
+                startActivity(MainActivity.getLaunchIntent(this));
+                finish();
                 break;
         }
     }
 
     private void showSettingsFragment() {
-        showFragment(R.id.activity_reg_form_fl_content, new SettingsInformationFragment());
+        currentStep = STEP_SETTINGS_FRAGMENT;
+
+        showFragment(R.id.activity_reg_form_fl_content, new SettingsInformationFragment(), true);
+    }
+
+    private void showChoosePackageFragment() {
+        currentStep = STEP_PACKAGE_FRAGMENT;
+
+        showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment(), true);
     }
 }

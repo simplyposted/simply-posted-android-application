@@ -94,9 +94,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    protected void showFragment(int contentId, Fragment fragment) {
+    protected void showFragment(int contentId, Fragment fragment, boolean addToBackStack) {
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
         fragTrans.replace(contentId, fragment);
+        if (addToBackStack)
+            fragTrans.addToBackStack(fragment.getClass().getName());
         fragTrans.commit();
     }
 

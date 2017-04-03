@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Simplyposted</string>
+    <string name="app_name">Simply Posted</string>
 
     <!-- login activity -->
     <string name="activity_login_tv_login">Login</string>
