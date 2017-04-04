@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.util.Storage;
 import com.qedum.simplyposted.util.Validator;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
@@ -83,6 +84,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private void tryLogin() {
         if (isFormValid()) {
+            Storage.getInstance().setUserLoggedIn(true);
             startActivity(MainActivity.getLaunchIntent(this));
         }
     }

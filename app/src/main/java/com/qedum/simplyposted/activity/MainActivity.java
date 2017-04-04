@@ -45,8 +45,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 .setSwipeDecor(new SwipeDecor()
 //                        .setPaddingTop(20)
                         .setRelativeScale(0.01f)
-                        .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
-                        .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
+                        .setSwipeInMsgLayoutId(R.layout.view_post_accepted)
+                        .setSwipeOutMsgLayoutId(R.layout.view_post_rejected));
 
 
         for (int i = 0; i < 10; i++) {
@@ -80,7 +80,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 

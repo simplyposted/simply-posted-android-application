@@ -10,5 +10,5 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@drawable/tab_text_selector" />
 </LinearLayout>

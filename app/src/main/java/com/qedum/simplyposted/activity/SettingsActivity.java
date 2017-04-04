@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TabHost;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.fragment.ChoosePackageFragment;
@@ -18,11 +18,9 @@ import com.qedum.simplyposted.fragment.SocialNetworksFragment;
  * Created by bogdan.aksonenko on 4/3/17.
  */
 public class SettingsActivity extends BaseActivity {
-
-    public static final String TAB_INDEX_KEY = "TAB_INDEX_KEY";
-    public static final int HOME_TAB_INDEX = 0;
-    public static final int HEMA_TAB_INDEX = 1;
-    public static final int SHOP_TAB_INDEX = 2;
+    public static final int SOCIAL_TAB_INDEX = 0;
+    public static final int SETTINGS_TAB_INDEX = 1;
+    public static final int PACKAGE_TAB_INDEX = 2;
     public static final String SOCIAL_TAB_TAG = "SOCIAL_TAB_TAG";
     public static final String SETTINGS_TAB_TAG = "SETTINGS_TAB_TAG";
     public static final String PACKAGE_TAB_TAG = "PACKAGE_TAB_TAG";
@@ -58,11 +56,11 @@ public class SettingsActivity extends BaseActivity {
 
     private String getTag(int i) {
         switch (i) {
-            case HOME_TAB_INDEX:
+            case SOCIAL_TAB_INDEX:
                 return SOCIAL_TAB_TAG;
-            case HEMA_TAB_INDEX:
+            case SETTINGS_TAB_INDEX:
                 return SETTINGS_TAB_TAG;
-            case SHOP_TAB_INDEX:
+            case PACKAGE_TAB_INDEX:
                 return PACKAGE_TAB_TAG;
         }
         return SOCIAL_TAB_TAG;
@@ -70,30 +68,47 @@ public class SettingsActivity extends BaseActivity {
 
     private TabHost.TabSpec createTab(String tag) {
         TabHost.TabSpec tabSpec = tabHost.newTabSpec(tag);
-        tabSpec.setIndicator(getTabIndicator(tag));
+        tabSpec.setIndicator(getResources().getString(getStringByTag(tag)));
         return tabSpec;
     }
 
-    private View getTabIndicator(String tab) {
-        View view = LayoutInflater.from(this).inflate(R.layout.tabhost_settings_menu, null);
-        TextView tvTitle = (TextView) view.findViewById(R.id.tabhost_settings_tx_title);
-        tvTitle.setText(getStringByTag(tab));
-        return view;
-    }
 
     private int getStringByTag(String tag) {
         int resId = -1;
         switch (tag) {
             case SOCIAL_TAB_TAG:
-                resId = R.string.app_name;
+                resId = R.string.activity_settings_menu_social_networks;
                 break;
             case SETTINGS_TAB_TAG:
-                resId = R.string.app_name;
+                resId = R.string.activity_settings_menu_settings;
                 break;
             case PACKAGE_TAB_TAG:
-                resId = R.string.app_name;
+                resId = R.string.activity_settings_menu_package;
                 break;
         }
         return resId;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+            case R.id.action_save:
+                Toast.makeText(this, getResources().getString(R.string.activity_settings_menu_saved), Toast.LENGTH_SHORT).show();
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
