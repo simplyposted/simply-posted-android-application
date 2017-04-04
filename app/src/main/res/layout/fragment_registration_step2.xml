@@ -180,8 +180,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:max="6"
-            android:progress="3"
-            android:tickMark="@drawable/tickmark"/>
+            android:progress="3"/>
 
         <EditText
             android:layout_width="match_parent"
