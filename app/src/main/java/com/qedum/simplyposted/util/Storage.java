@@ -17,6 +17,10 @@ public class Storage {
     private static final String ADDRESS_KEY = "address_key";
     private static final String COMPANY_NAME = "company_name";
     private static final String COMPANY_PHONE = "company_phone";
+    private static final String CHOOSE_PACKAGE = "choose_package";
+    private static final int DEFAULT_CHECKBOX_VALUE = -1;
+
+
 
     private static Storage instance;
     private SharedPreferences sharedPreferences;
@@ -54,12 +58,22 @@ public class Storage {
 
     public void setCompanyPhone(String value) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(COMPANY_NAME, value);
+        editor.putString(COMPANY_PHONE, value);
         editor.apply();
     }
 
     public String getCompanyPhone() {
         return sharedPreferences.getString(COMPANY_NAME, "");
+    }
+
+    public void setChkPackage(int value)  {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(CHOOSE_PACKAGE, value);
+        editor.apply();
+    }
+
+    public int getChkPackage(){
+        return sharedPreferences.getInt(CHOOSE_PACKAGE, DEFAULT_CHECKBOX_VALUE);
     }
 
     private boolean getBoolean(String key) {
