@@ -27,7 +27,7 @@ public class SettingsInformationFragment extends BaseFragment {
 
     }
 
-    private boolean isFormValid() {
+    public boolean isFormValid() {
         if (BaseActivity.isEditTextEmpty(etName)) {
             etName.requestFocus();
             showInformationDialog(R.string.fragment_step2_name_title, R.string.fragment_step2_name_text);

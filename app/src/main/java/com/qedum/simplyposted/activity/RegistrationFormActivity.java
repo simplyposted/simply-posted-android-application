@@ -3,6 +3,7 @@ package com.qedum.simplyposted.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Button;
 
@@ -64,13 +65,16 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
             case STEP_SOCIAL_NETWORKS:
                 //TODO: check from storage
 //                if(Storage.getInstance().isFbConnected())
-                    //TODO: add ||Storage.isTwitterConnected() )
+                //TODO: add ||Storage.isTwitterConnected() )
                 showSettingsFragment();
                 break;
 
             case STEP_SETTINGS_FRAGMENT:
                 //TODO: check from storage
-                showChoosePackageFragment();
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_reg_form_fl_content);
+                if ((fragment instanceof SettingsInformationFragment) && ((SettingsInformationFragment) fragment).isFormValid()) {
+                    showChoosePackageFragment();
+                }
                 break;
 
             case STEP_PACKAGE_FRAGMENT:
@@ -96,4 +100,6 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
         currentStep--;
         super.onBackPressed();
     }
+
+
 }
