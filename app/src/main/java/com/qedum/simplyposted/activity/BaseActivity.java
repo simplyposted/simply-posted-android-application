@@ -21,6 +21,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.testfairy.TestFairy;
+
 public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog progressDialog;
@@ -40,6 +42,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getContentView());
+
+        if (this instanceof MainActivity)
+            TestFairy.begin(this, "b9f28b80787932774885fa1e682d799c94cdd557");
     }
 
     @Override

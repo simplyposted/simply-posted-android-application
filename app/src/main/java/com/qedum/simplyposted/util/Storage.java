@@ -63,7 +63,7 @@ public class Storage {
     }
 
     public String getCompanyPhone() {
-        return sharedPreferences.getString(COMPANY_NAME, "");
+        return sharedPreferences.getString(COMPANY_PHONE, "");
     }
 
     public void setChkPackage(int value)  {
