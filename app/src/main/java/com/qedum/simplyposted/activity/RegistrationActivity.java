@@ -70,36 +70,21 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             showInformationDialog(R.string.login_email_dialog_title, R.string.login_email_dialog_text);
             return false;
         }
-        if (isEditTextEmpty(etPassword)) {
-            etPassword.requestFocus();
-            showInformationDialog(R.string.login_password_dialog_title, R.string.login_password_dialog_text);
-            return false;
-        }
-
-        if (isEditTextEmpty(etConfirmPassword)) {
-            etConfirmPassword.requestFocus();
-            showInformationDialog(R.string.registration_confirm_password_dialog_title, R.string.registration_confirm_password_dialog_text);
-            return false;
-        }
-
         if (!Validator.isEmailValid(etEmail.getText().toString())) {
             etEmail.requestFocus();
             showInformationDialog(R.string.wrong_email_format_dialog_title, R.string.wrong_email_format_dialog_text);
             return false;
         }
-
+        if (isEditTextEmpty(etPassword)) {
+            etPassword.requestFocus();
+            showInformationDialog(R.string.login_password_dialog_title, R.string.login_password_dialog_text);
+            return false;
+        }
         if (!Validator.isPasswordValid(etPassword.getText().toString())) {
             etPassword.requestFocus();
             showInformationDialog(R.string.wrong_password_format_dialog_title, R.string.wrong_password_format_dialog_text);
             return false;
         }
-
-        if (!Validator.isPasswordValid(etConfirmPassword.getText().toString())) {
-            etConfirmPassword.requestFocus();
-            showInformationDialog(R.string.wrong_password_format_dialog_title, R.string.wrong_password_format_dialog_text);
-            return false;
-        }
-
         if (!(etPassword.getText().toString().equals(etConfirmPassword.getText().toString()))) {
             showInformationDialog(R.string.not_match_passwords_dialog_title, R.string.not_match_passwords__dialog_text);
             return false;

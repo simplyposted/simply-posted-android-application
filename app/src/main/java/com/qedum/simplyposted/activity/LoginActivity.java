@@ -64,16 +64,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             showInformationDialog(R.string.login_email_dialog_title, R.string.login_email_dialog_text);
             return false;
         }
-        if (isEditTextEmpty(etPassword)) {
-            etPassword.requestFocus();
-            showInformationDialog(R.string.login_password_dialog_title, R.string.login_password_dialog_text);
-            return false;
-        }
         if (!Validator.isEmailValid(etEmail.getText().toString())) {
             etEmail.requestFocus();
             showInformationDialog(R.string.wrong_email_format_dialog_title, R.string.wrong_email_format_dialog_text);
             return false;
         }
+        if (isEditTextEmpty(etPassword)) {
+            etPassword.requestFocus();
+            showInformationDialog(R.string.login_password_dialog_title, R.string.login_password_dialog_text);
+            return false;
+        }
+
         if (!Validator.isPasswordValid(etPassword.getText().toString())) {
             etPassword.requestFocus();
             showInformationDialog(R.string.wrong_password_format_dialog_title, R.string.wrong_password_format_dialog_text);

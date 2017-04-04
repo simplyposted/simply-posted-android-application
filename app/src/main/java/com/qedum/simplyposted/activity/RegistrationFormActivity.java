@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.fragment.ChoosePackageFragment;
@@ -19,6 +20,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     private static final int STEP_PACKAGE_FRAGMENT = 2;
 
     private Button btnNext;
+    private TextView tvStep;
     private int currentStep;
 
     public static Intent getLaunchIntent(Context context) {
@@ -33,6 +35,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     @Override
     protected void attachActivityViews(Bundle savedInstanceState) {
         btnNext = (Button) findViewById(R.id.activity_reg_form_btn_next);
+        tvStep = (TextView) findViewById(R.id.activity_reg_form_tv_step);
 
         showSocialNetworksFragment();
     }
@@ -85,19 +88,38 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
     private void showSettingsFragment() {
         currentStep = STEP_SETTINGS_FRAGMENT;
+        setStepTitle();
 
         showFragment(R.id.activity_reg_form_fl_content, new SettingsInformationFragment(), true);
     }
 
     private void showChoosePackageFragment() {
         currentStep = STEP_PACKAGE_FRAGMENT;
+        setStepTitle();
 
         showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment(), true);
+    }
+
+    private void setStepTitle() {
+        switch (currentStep) {
+            case STEP_SETTINGS_FRAGMENT:
+                tvStep.setText(R.string.fragment_registration_step2_text);
+                break;
+
+            case STEP_PACKAGE_FRAGMENT:
+                tvStep.setText(R.string.fragment_registration_step3_text);
+                break;
+
+            default:
+                tvStep.setText(R.string.fragment_registration_step1_text);
+                break;
+        }
     }
 
     @Override
     public void onBackPressed() {
         currentStep--;
+        setStepTitle();
         super.onBackPressed();
     }
 
