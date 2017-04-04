@@ -21,6 +21,14 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <TextView
+        android:id="@+id/activity_reg_form_tv_skip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="@string/skip" />
+
     <Button
         android:id="@+id/activity_reg_form_btn_next"
         android:layout_width="match_parent"

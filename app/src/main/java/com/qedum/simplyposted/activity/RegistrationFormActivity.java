@@ -21,6 +21,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
     private Button btnNext;
     private TextView tvStep;
+    private TextView tvSkip;
     private int currentStep;
 
     public static Intent getLaunchIntent(Context context) {
@@ -36,6 +37,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     protected void attachActivityViews(Bundle savedInstanceState) {
         btnNext = (Button) findViewById(R.id.activity_reg_form_btn_next);
         tvStep = (TextView) findViewById(R.id.activity_reg_form_tv_step);
+        tvSkip = (TextView) findViewById(R.id.activity_reg_form_tv_skip);
 
         showSocialNetworksFragment();
     }
@@ -51,12 +53,14 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     protected void initActivityViews(Bundle savedInstanceState) {
         currentStep = STEP_SOCIAL_NETWORKS;
         btnNext.setOnClickListener(this);
+        tvSkip.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_reg_form_btn_next:
+            case R.id.activity_reg_form_tv_skip:
                 tryShowNextScreen();
                 break;
         }
@@ -73,11 +77,13 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
                 break;
 
             case STEP_SETTINGS_FRAGMENT:
-                //TODO: check from storage
+                //TODO:  ??? check from storage
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_reg_form_fl_content);
-                if ((fragment instanceof SettingsInformationFragment) && ((SettingsInformationFragment) fragment).isFormValid()) {
-                    showChoosePackageFragment();
-                }
+                if (fragment instanceof SettingsInformationFragment)
+                    ((SettingsInformationFragment) fragment).saveSettings();
+//                && ((SettingsInformationFragment) fragment).isFormValid()) {
+                showChoosePackageFragment();
+//                }
                 break;
 
             case STEP_PACKAGE_FRAGMENT:
@@ -122,6 +128,4 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
         setStepTitle();
         super.onBackPressed();
     }
-
-
 }

@@ -6,11 +6,16 @@ import android.widget.EditText;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.activity.BaseActivity;
 import com.qedum.simplyposted.util.Storage;
+import com.qedum.simplyposted.view.MultiSpinner;
 
-public class SettingsInformationFragment extends BaseFragment {
+import java.util.Arrays;
+
+public class SettingsInformationFragment extends BaseFragment implements MultiSpinner.MultiSpinnerListener {
 
     private EditText etName;
     private EditText etPhone;
+    private EditText etZip;
+    private MultiSpinner msCategories;
 
     @Override
     protected int getContentView() {
@@ -21,12 +26,18 @@ public class SettingsInformationFragment extends BaseFragment {
     protected void attachFragmentViews(View view) {
         etName = (EditText) view.findViewById(R.id.fragment_registration_step2_et_name);
         etPhone = (EditText) view.findViewById(R.id.fragment_registration_step2_et_phone);
+        etZip = (EditText) view.findViewById(R.id.fragment_registration_step2_et_zipcode);
+        msCategories = (MultiSpinner) view.findViewById(R.id.fragment_registration_ms_categories);
     }
 
     @Override
     protected void initFragmentViews() {
         etName.setText(Storage.getInstance().getCompanyName());
         etPhone.setText(Storage.getInstance().getCompanyPhone());
+        etZip.setText(Storage.getInstance().getZipCode());
+
+        String[] categoriesArr = getResources().getStringArray(R.array.categories);
+        msCategories.setItems(Arrays.asList(categoriesArr), getString(R.string.fragment_registration_all_categories), this);
     }
 
     public boolean isFormValid() {
@@ -40,10 +51,17 @@ public class SettingsInformationFragment extends BaseFragment {
             showInformationDialog(R.string.fragment_step2_phone_title, R.string.fragment_step2_phone_text);
             return false;
         }
+        return true;
+    }
 
+    public void saveSettings() {
         Storage.getInstance().setCompanyName(etName.getText().toString());
         Storage.getInstance().setCompanyPhone(etPhone.getText().toString());
+        Storage.getInstance().setZipCode(etZip.getText().toString());
+    }
 
-        return true;
+    @Override
+    public void onItemsSelected(boolean[] selected) {
+
     }
 }

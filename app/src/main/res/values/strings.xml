@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Simply Posted</string>
+    <string name="skip">Skip</string>
 
     <!-- login activity -->
     <string name="activity_login_tv_login">Login</string>
@@ -58,6 +59,7 @@
     <string name="fragment_registration_step2_text">Step 2/3</string>
     <string name="fragment_registration_step2_et_name">Name</string>
     <string name="fragment_registration_step2_et_phone">Phone</string>
+    <string name="fragment_registration_step2_sipzode">Zip code</string>
     <string name="fragment_registration_step2_tone_and_voice">Tone and Voice</string>
     <string name="fragment_registration_step2_business_details">Business details</string>
     <string name="fragment_registration_step2_tv_playful">Playful</string>
@@ -83,7 +85,17 @@
     <string name="fragment_step2_phone_text">Please enter your phone</string>
     <string name="fragment_social_account_connected">Account connected</string>
 
-    <!-- fragment step 1 -->
+    <string name="fragment_registration_all_categories">All categories</string>
+    <string-array name="categories">
+        <item>Home Selling</item>
+        <item>Home Buying</item>
+        <item>Foreclosure</item>
+        <item>Investing</item>
+        <item>First Time Home Buyers</item>
+        <item>Realtor</item>
+        <item>Homeownership</item>
+        <item>Property Management</item>
+    </string-array>
 
     <!-- activity settings -->
     <string name="menu_action_save">Save</string>

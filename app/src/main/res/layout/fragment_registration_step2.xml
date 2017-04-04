@@ -22,13 +22,11 @@
             android:textAlignment="center"
             android:textSize="18sp" />
 
-
         <EditText
             android:id="@+id/fragment_registration_step2_et_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_weight="1"
             android:hint="@string/fragment_registration_step2_et_name"
             android:inputType="textPersonName" />
 
@@ -36,28 +34,17 @@
             android:id="@+id/fragment_registration_step2_et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_weight="1"
+            android:layout_marginBottom="10dp"
             android:hint="@string/fragment_registration_step2_et_phone"
             android:inputType="phone" />
 
-
-        <TextView
+        <EditText
+            android:id="@+id/fragment_registration_step2_et_zipcode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="@string/fragment_registration_step2_tone_and_voice"
-            android:textAlignment="center" />
-
-        <SeekBar
-            android:id="@+id/fragment_registration_step2_sb_tone"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:max="5"
-            android:progress="2" />
+            android:hint="@string/fragment_registration_step2_sipzode"
+            android:inputType="" />
 
         <TextView
             android:layout_width="match_parent"
@@ -102,7 +89,6 @@
             android:layout_marginBottom="10dp"
             android:max="5"
             android:progress="3" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,12 +162,17 @@
             android:max="5"
             android:progress="3" />
 
+        <com.qedum.simplyposted.view.MultiSpinner
+            android:id="@+id/fragment_registration_ms_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="@string/fragment_registration_step2_et_additional_info" />
-
 
     </LinearLayout>
 </ScrollView>

@@ -37,7 +37,7 @@ public class ChoosePackageFragment extends BaseFragment implements CompoundButto
         chkBasic.setOnCheckedChangeListener(this);
         chkPro.setOnCheckedChangeListener(this);
 
-        switch (Storage.getInstance().getChkPackage()) {
+        switch (Storage.getInstance().getUserPackage()) {
             case ENTRY:
                 chkEntry.setChecked(true);
                 break;
@@ -50,38 +50,32 @@ public class ChoosePackageFragment extends BaseFragment implements CompoundButto
         }
 
 
-
     }
 
     @Override
-    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-        switch (compoundButton.getId()) {
-            case R.id.fragment_registration_step3_chk_entry:
-                if (b) {
+    public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+        if (isChecked) {
+            switch (compoundButton.getId()) {
+                case R.id.fragment_registration_step3_chk_entry:
                     setCheckBoxStorage(ENTRY);
                     chkBasic.setChecked(false);
                     chkPro.setChecked(false);
-                }
-                break;
-            case R.id.fragment_registration_step3_chk_basic:
-                if (b) {
+                    break;
+                case R.id.fragment_registration_step3_chk_basic:
                     setCheckBoxStorage(BASIC);
                     chkEntry.setChecked(false);
                     chkPro.setChecked(false);
-                }
-                break;
-            case R.id.fragment_registration_step3_chk_pro:
-                if (b) {
+                    break;
+                case R.id.fragment_registration_step3_chk_pro:
                     setCheckBoxStorage(PRO);
                     chkBasic.setChecked(false);
                     chkEntry.setChecked(false);
-                }
-                break;
+                    break;
+            }
         }
     }
 
-    private void setCheckBoxStorage (int value) {
-        Storage.getInstance().setChkPackage(value);
+    private void setCheckBoxStorage(int value) {
+        Storage.getInstance().setUserPackage(value);
     }
-
 }
