@@ -102,7 +102,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         fragTrans.commit();
     }
 
-    protected boolean isEditTextEmpty(EditText editText) {
+    public static boolean isEditTextEmpty(EditText editText) {
         return editText.getText().toString().trim().length() == 0;
     }
 

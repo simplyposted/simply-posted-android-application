@@ -71,6 +71,10 @@
     <string name="fragment_registration_step3_descr">Some description</string>
     <string name="fragment_registration_step3_chk_basic">Basic</string>
     <string name="fragment_registration_step3_chk_pro">Pro</string>
+    <string name="fragment_step2_name_title">Name</string>
+    <string name="fragment_step2_name_text">Please enter your name</string>
+    <string name="fragment_step2_phone_title">Phone</string>
+    <string name="fragment_step2_phone_text">Please enter your phone</string>
 
     <!-- fragment step 1 -->
 
