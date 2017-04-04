@@ -61,9 +61,12 @@
 
         <SeekBar
             android:id="@+id/fragment_registration_step2_sb_tone"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:max="5"
+            android:progress="2"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -106,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:max="6"
+            android:max="5"
             android:progress="3" />
 
 
@@ -143,7 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:max="6"
+            android:max="5"
             android:progress="3" />
 
         <LinearLayout
@@ -179,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:max="6"
+            android:max="5"
             android:progress="3"/>
 
         <EditText

@@ -5,6 +5,7 @@ import android.widget.EditText;
 
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.activity.BaseActivity;
+import com.qedum.simplyposted.util.Storage;
 
 public class SettingsInformationFragment extends BaseFragment {
 
@@ -24,7 +25,8 @@ public class SettingsInformationFragment extends BaseFragment {
 
     @Override
     protected void initFragmentViews() {
-
+        etName.setText(Storage.getInstance().getCompanyName());
+        etPhone.setText(Storage.getInstance().getCompanyPhone());
     }
 
     private boolean isFormValid() {

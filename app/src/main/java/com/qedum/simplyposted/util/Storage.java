@@ -15,6 +15,8 @@ public class Storage {
     private static final String FIRST_NAME_KEY = "first_name_key";
     private static final String LAST_NAME_KEY = "last_name_key";
     private static final String ADDRESS_KEY = "address_key";
+    private static final String COMPANY_NAME = "company_name";
+    private static final String COMPANY_PHONE = "company_phone";
 
     private static Storage instance;
     private SharedPreferences sharedPreferences;
@@ -40,6 +42,26 @@ public class Storage {
         return sharedPreferences.getBoolean(key, defValue);
     }
 
+    public void setCompanyName(String value) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(COMPANY_NAME, value);
+        editor.apply();
+    }
+
+    public String getCompanyName() {
+        return sharedPreferences.getString(COMPANY_NAME, "");
+    }
+
+    public void setCompanyPhone(String value) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(COMPANY_NAME, value);
+        editor.apply();
+    }
+
+    public String getCompanyPhone() {
+        return sharedPreferences.getString(COMPANY_NAME, "");
+    }
+
     private boolean getBoolean(String key) {
         return get(key, false);
     }
@@ -51,6 +73,7 @@ public class Storage {
     public void setUserLoggedIn(boolean isLoggedIn) {
         put(LOGGED_IN_KEY, isLoggedIn);
     }
+
 
     public boolean isFbConnected() {
         return getBoolean(FB_CONNECTED_KEY);

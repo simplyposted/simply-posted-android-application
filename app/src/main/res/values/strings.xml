@@ -75,6 +75,7 @@
     <string name="fragment_step2_name_text">Please enter your name</string>
     <string name="fragment_step2_phone_title">Phone</string>
     <string name="fragment_step2_phone_text">Please enter your phone</string>
+    <string name="fragment_social_account_connected">Account connected</string>
 
     <!-- fragment step 1 -->
 
