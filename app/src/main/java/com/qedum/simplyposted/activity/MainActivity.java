@@ -20,7 +20,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private SwipePlaceHolderView mSwipeView;
 
     public static Intent getLaunchIntent(Context context) {
-        return new Intent(context, MainActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        return intent;
     }
 
     @Override

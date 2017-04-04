@@ -75,7 +75,6 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
 
             case STEP_PACKAGE_FRAGMENT:
                 startActivity(MainActivity.getLaunchIntent(this));
-                finish();
                 break;
         }
     }
