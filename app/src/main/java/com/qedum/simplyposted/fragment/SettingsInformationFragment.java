@@ -40,6 +40,10 @@ public class SettingsInformationFragment extends BaseFragment {
             showInformationDialog(R.string.fragment_step2_phone_title, R.string.fragment_step2_phone_text);
             return false;
         }
+
+        Storage.getInstance().setCompanyName(etName.getText().toString());
+        Storage.getInstance().setCompanyPhone(etPhone.getText().toString());
+
         return true;
     }
 }

@@ -6,12 +6,17 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.util.Storage;
 
 public class ChoosePackageFragment extends BaseFragment implements CompoundButton.OnCheckedChangeListener {
 
     private CheckBox chkEntry;
     private CheckBox chkBasic;
     private CheckBox chkPro;
+
+    private static final int ENTRY = 0;
+    private static final int BASIC = 1;
+    private static final int PRO = 2;
 
     @Override
     protected int getContentView() {
@@ -32,6 +37,20 @@ public class ChoosePackageFragment extends BaseFragment implements CompoundButto
         chkBasic.setOnCheckedChangeListener(this);
         chkPro.setOnCheckedChangeListener(this);
 
+        switch (Storage.getInstance().getChkPackage()) {
+            case ENTRY:
+                chkEntry.setChecked(true);
+                break;
+            case BASIC:
+                chkBasic.setChecked(true);
+                break;
+            case PRO:
+                chkPro.setChecked(true);
+                break;
+        }
+
+
+
     }
 
     @Override
@@ -39,23 +58,30 @@ public class ChoosePackageFragment extends BaseFragment implements CompoundButto
         switch (compoundButton.getId()) {
             case R.id.fragment_registration_step3_chk_entry:
                 if (b) {
+                    setCheckBoxStorage(ENTRY);
                     chkBasic.setChecked(false);
                     chkPro.setChecked(false);
                 }
                 break;
             case R.id.fragment_registration_step3_chk_basic:
                 if (b) {
+                    setCheckBoxStorage(BASIC);
                     chkEntry.setChecked(false);
                     chkPro.setChecked(false);
                 }
                 break;
             case R.id.fragment_registration_step3_chk_pro:
                 if (b) {
+                    setCheckBoxStorage(PRO);
                     chkBasic.setChecked(false);
                     chkEntry.setChecked(false);
                 }
                 break;
         }
+    }
+
+    private void setCheckBoxStorage (int value) {
+        Storage.getInstance().setChkPackage(value);
     }
 
 }
