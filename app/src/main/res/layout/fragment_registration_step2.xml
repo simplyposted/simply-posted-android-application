@@ -95,7 +95,8 @@
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:text="@string/fragment_registration_step2_tv_corporate"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:gravity="end"/>
 
         </LinearLayout>
 
@@ -131,7 +132,8 @@
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:text="@string/fragment_registration_step2_tv_general"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:gravity="end"/>
 
         </LinearLayout>
 
@@ -166,7 +168,8 @@
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:text="@string/fragment_registration_step2_tv_promotional"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:gravity="end"/>
 
         </LinearLayout>
 
@@ -177,7 +180,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:max="6"
-            android:progress="3" />
+            android:progress="3"
+            android:tickMark="@drawable/tickmark"/>
 
         <EditText
             android:layout_width="match_parent"
