@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.util.Storage;
 
-
 public class SplashActivity extends AppCompatActivity {
 
     private static final int TIME_ACTIVITY_SHOWN = 2 * 1000;

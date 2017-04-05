@@ -12,11 +12,6 @@ public class Storage {
     private static final String LOGGED_IN_KEY = "logged_in";
 
     private static final String FB_CONNECTED_KEY = "FB_CONNECTED_KEY";
-    private static final String EMAIL_KEY = "email_key";
-    private static final String PASSWORD_KEY = "password_key";
-    private static final String FIRST_NAME_KEY = "first_name_key";
-    private static final String LAST_NAME_KEY = "last_name_key";
-    private static final String ADDRESS_KEY = "address_key";
     private static final String COMPANY_NAME_KEY = "COMPANY_NAME_KEY";
     private static final String COMPANY_PHONE_KEY = "COMPANY_PHONE_KEY";
     private static final String PACKAGE_KEY = "PACKAGE_KEY";
@@ -107,22 +102,6 @@ public class Storage {
     public void setFbConnected(boolean value) {
         put(LOGGED_IN_KEY, value);
     }
-
-//    public void saveUser(User user) {
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString(EMAIL_KEY, user.getEmail());
-//        editor.putString(FIRST_NAME_KEY, user.getFirstName());
-//        editor.putString(LAST_NAME_KEY, user.getLastName());
-//        editor.apply();
-//    }
-//
-//    public User getUser() {
-//        RitualsUser user = new RitualsUser();
-//        user.setEmail(sharedPreferences.getString(EMAIL_KEY, ""));
-//        user.setFirstName(sharedPreferences.getString(FIRST_NAME_KEY, ""));
-//        user.setLastName(sharedPreferences.getString(LAST_NAME_KEY, ""));
-//        return user;
-//    }
 
     public void clearAll() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
