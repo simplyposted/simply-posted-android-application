@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#0798d4</color>
+    <color name="colorPrimaryDark">#0686ba</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="white">#FFFFFF</color>
+    <color name="buttons_layout_registration">#125ea4</color>
+    <color name="edittext_inputs_color">#FFFFFF</color>
+    <color name="top_bar_color">#0587ba</color>
+    <color name="textview_login_reg_color">@android:color/white</color>
+
+    <color name="text_color">#303030</color>
+
+    <color name="textview_blue_color">#b3d8ec</color>
+    <color name="social_accounts_tv_blue_color">#9dacc7</color>
+    <color name="seekbar_background">#44addc</color>
+
+    //activity Registration
+    <color name="editTextBackgroundTransparentRegistrationActivity">#80ffffff</color>
+    <color name="buttonOkBackgroundRegistrationActivity">#fff</color>
+    <color name="buttonOkPressedBackgroundRegistrationActivity">#cecece</color>
+    <color name="button_blue_color">#4994d0</color>
+    <color name="buttonCancelBackgroundRegistrationActivity">@android:color/transparent</color>
+    <color name="MainBackgroundRegistrationActivity">#1a84ea</color>
+    <color name="facebook_button">#385696</color>
+    <color name="textview_white">#ffffffff</color>
+    <color name="linkedin_button">#0077b6</color>
+    <color name="twitter_button">#1aa1f5</color>
+    <color name="instagram_button">#e24160</color>
+
+    //main activity
+    <color name="activity_main_bg">#EAF5FC</color>
+
 </resources>

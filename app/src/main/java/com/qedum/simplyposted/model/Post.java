@@ -1,5 +1,8 @@
 package com.qedum.simplyposted.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +11,7 @@ import java.util.Random;
 /**
  * Created by bogdan.aksonenko on 4/3/17.
  */
-public class Post {
+public class Post implements Parcelable {
     //TODO: remove hardcoded images
     List<String> images = new ArrayList<>();
 
@@ -65,8 +68,8 @@ public class Post {
     public Post() {
         int randomNumber = new Random().nextInt(images.size());
         setImageUrl(images.get(randomNumber));
-        setLink("link");
-        setTitle("Random headline " + randomNumber);
+        setLink("Brandon Foote");
+        setTitle("Are ready to sell? Here 3 helpful steps to prepare your home for the big sale. #SellingYourHome #Sammamish" + randomNumber);
     }
 
     public Post(String title, String link, String imageUrl, Date date) {
@@ -75,4 +78,40 @@ public class Post {
         this.imageUrl = imageUrl;
         this.date = date;
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeStringList(this.images);
+        dest.writeString(this.title);
+        dest.writeString(this.link);
+        dest.writeString(this.imageUrl);
+        dest.writeLong(this.date != null ? this.date.getTime() : -1);
+    }
+
+    protected Post(Parcel in) {
+        this.images = in.createStringArrayList();
+        this.title = in.readString();
+        this.link = in.readString();
+        this.imageUrl = in.readString();
+        long tmpDate = in.readLong();
+        this.date = tmpDate == -1 ? null : new Date(tmpDate);
+    }
+
+    public static final Parcelable.Creator<Post> CREATOR = new Parcelable.Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel source) {
+            return new Post(source);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 }

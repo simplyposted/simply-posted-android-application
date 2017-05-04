@@ -1,54 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/background_screen"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="15dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="75dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/logo" />
 
     <TextView
+        fontPath="fonts/Roboto-Light.ttf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:gravity="center"
         android:text="@string/activity_registration_registration_text"
         android:textAlignment="center"
-        android:gravity="center"
+        android:textColor="@color/textview_login_reg_color"
         android:textSize="25sp" />
 
     <EditText
+        fontPath="fonts/Roboto-Regular.ttf"
         android:id="@+id/activity_registration_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginStart="25dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/bg_edt"
         android:hint="@string/activity_login_hint_email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:theme="@style/EditTextRegistrationActivity" />
 
     <EditText
+        fontPath="fonts/Roboto-Regular.ttf"
         android:id="@+id/activity_registration_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginStart="25dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/bg_edt"
         android:hint="@string/activity_login_hint_password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:theme="@style/EditTextRegistrationActivity" />
 
     <EditText
+        fontPath="fonts/Roboto-Regular.ttf"
         android:id="@+id/activity_registration_password_confirm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_marginStart="25dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="35dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:background="@drawable/bg_edt"
         android:hint="@string/activity_registration_hint_confirm_password"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:theme="@style/EditTextRegistrationActivity" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,28 +82,47 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/activity_registration_btn_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="5dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginStart="25dp"
-            android:layout_weight="1"
-            android:text="@string/activity_registration_ok_button" />
-
-        <Button
+            fontPath="fonts/Roboto-Regular.ttf"
             android:id="@+id/activity_registration_btn_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="25dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="35dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_button_cancel"
+            android:text="@string/activity_registration_cancel_button"
+            android:textAllCaps="false" />
+
+        <Button
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:id="@+id/activity_registration_btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="35dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginRight="35dp"
             android:layout_marginStart="5dp"
             android:layout_weight="1"
-            android:text="@string/activity_registration_cancel_button" />
-
+            android:background="@drawable/bg_button_white"
+            android:text="@string/activity_registration_ok_button"
+            android:textColor="@color/button_blue_color" />
     </LinearLayout>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        fontPath="fonts/Roboto-Regular.ttf"
+        android:id="@+id/activity_registration_tv_signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="22dp"
+        android:text="@string/activity_registration_tv_signin"
+        android:textColor="@color/textview_login_reg_color" />
 
 </LinearLayout>

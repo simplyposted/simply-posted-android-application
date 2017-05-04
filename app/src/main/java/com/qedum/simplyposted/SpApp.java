@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
 public class SpApp extends Application {
 
     private static Context context;
@@ -19,6 +21,13 @@ public class SpApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
+
         context = getApplicationContext();
 //        isDebuggable = (0 != (getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE));
         try {
@@ -39,7 +48,7 @@ public class SpApp extends Application {
         return buildNumber;
     }
 
-    public static Context getAppContext() {
+    public static Context getContext() {
         return context;
     }
 }

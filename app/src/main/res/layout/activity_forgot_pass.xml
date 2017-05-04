@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_screen"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="15dp">
+
+    <TextView
+        fontPath="fonts/Roboto-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/activity_forgot_tv_title"
+        android:textAlignment="center"
+        android:textColor="@color/textview_login_reg_color"
+        android:textSize="25sp" />
+
+    <TextView
+        fontPath="fonts/Roboto-Light.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/activity_forgot_tv_text"
+        android:textAlignment="center"
+        android:textColor="@color/textview_login_reg_color"
+        android:textSize="16sp" />
+
+
+    <EditText
+        android:id="@+id/activity_forgot_pass_edt_email"
+        fontPath="fonts/Roboto-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edt"
+        android:hint="@string/activity_login_hint_email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/edittext_inputs_color"
+        android:textSize="15sp"
+        android:theme="@style/EditTextRegistrationActivity" />
+
+
+    <Button
+        android:id="@+id/activity_forgot_pass_btn_send"
+        fontPath="fonts/Roboto-Regular.ttf"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_button_login"
+        android:gravity="center"
+        android:text="@string/activity_forgot_bt_send"
+        android:textAllCaps="false" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/activity_forgot_pass_tv_login"
+        fontPath="fonts/Roboto-Regular.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="22dp"
+        android:text="@string/activity_forgot_tv_login"
+        android:textAlignment="center"
+        android:textColor="@color/textview_login_reg_color"
+        android:textSize="14sp" />
+
+</LinearLayout>

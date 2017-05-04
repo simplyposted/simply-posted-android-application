@@ -2,86 +2,250 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingEnd="25dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingStart="25dp">
 
-    <TextView
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/fragment_registration_step1_progress"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="@string/fragment_registration_social_accounts"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:layout_gravity="center"
+        android:paddingBottom="60dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/step_1" />
 
-    <TextView
-        android:id="@+id/fragment_registration_step1_tv_facebook"
+    <LinearLayout
+        android:id="@+id/fragment_registration_step1_facebook"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/facebook"
-        android:drawablePadding="15dp"
-        android:drawableStart="@drawable/facebook"
+        android:background="@drawable/bg_facebook"
         android:gravity="center_vertical"
-        android:paddingEnd="80dp"
-        android:paddingLeft="100dp"
-        android:paddingRight="80dp"
-        android:paddingStart="100dp"
-        android:text="@string/fragment_registration_step1_tv_facebook"
-        android:textSize="25sp" />
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/fragment_registration_step1_tv_linkedin"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_facebook_24px" />
+
+        <TextView
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="Facebook"
+            android:textColor="@color/textview_white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/fragment_registration_step1_tv_facebook"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/fragment_social_account_not_connected"
+            android:textColor="@color/social_accounts_tv_blue_color" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/fragment_registration_step1_imv_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done_18px"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_registration_step1_linkedin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/linkedin"
-        android:drawablePadding="15dp"
-        android:drawableStart="@drawable/linkedin"
+        android:background="@drawable/bg_linkedin"
         android:gravity="center_vertical"
-        android:paddingEnd="80dp"
-        android:paddingLeft="100dp"
-        android:paddingRight="80dp"
-        android:paddingStart="100dp"
-        android:text="@string/fragment_registration_step1_tv_linkedin"
-        android:textSize="25sp" />
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/fragment_registration_step1_tv_twitter"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_linkedin_24px" />
+
+        <TextView
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="LinkedIn"
+            android:textColor="@color/textview_white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/fragment_registration_step1_tv_linkedin"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/fragment_social_account_not_connected"
+            android:textColor="@color/social_accounts_tv_blue_color" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/fragment_registration_step1_imv_linkedin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done_18px"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_registration_step1_twitter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginBottom="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/twitter"
-        android:drawablePadding="15dp"
-        android:drawableStart="@drawable/twitter"
+        android:background="@drawable/bg_twitter"
         android:gravity="center_vertical"
-        android:paddingEnd="80dp"
-        android:paddingLeft="100dp"
-        android:paddingRight="80dp"
-        android:paddingStart="100dp"
-        android:text="@string/fragment_registration_step1_tv_twitter"
-        android:textSize="25sp" />
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/fragment_registration_step1_tv_instagram"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_twitter_24px" />
+
+        <TextView
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="Twitter"
+            android:textColor="@color/textview_white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/fragment_registration_step1_tv_twitter"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/fragment_social_account_not_connected"
+            android:textColor="@color/social_accounts_tv_blue_color" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/fragment_registration_step1_imv_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done_18px"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_registration_step1_instagram"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/instagram"
-        android:drawablePadding="15dp"
-        android:drawableStart="@drawable/instagram"
+        android:background="@drawable/bg_instagram"
         android:gravity="center_vertical"
-        android:paddingEnd="80dp"
-        android:paddingLeft="100dp"
-        android:paddingRight="80dp"
-        android:paddingStart="100dp"
-        android:text="@string/fragment_registration_step1_tv_instagram"
-        android:textSize="25sp" />
+        android:orientation="horizontal"
+        android:weightSum="1">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_instagram_24px" />
+
+        <TextView
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
+            android:text="Instagram"
+            android:textColor="@color/textview_white" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/fragment_registration_step1_tv_instagram"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/fragment_social_account_not_connected"
+            android:textColor="@color/social_accounts_tv_blue_color" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/fragment_registration_step1_imv_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_done_18px"
+            android:visibility="invisible" />
+    </LinearLayout>
 
 </LinearLayout>
 

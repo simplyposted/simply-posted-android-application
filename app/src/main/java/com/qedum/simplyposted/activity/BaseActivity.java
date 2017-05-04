@@ -15,13 +15,21 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.UnderlineSpan;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.qedum.simplyposted.R;
 import com.testfairy.TestFairy;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -71,8 +79,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void styleActionBar(ActionBar actionBar) {
-        if (actionBar != null)
+        if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(isHomeAsUpEnabledShown());
+            actionBar.setLogo(R.drawable.logo);
+            actionBar.setDisplayUseLogoEnabled(true);
+        }
     }
 
     protected boolean isHomeAsUpEnabledShown() {
@@ -88,6 +99,11 @@ public abstract class BaseActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     public void hideKeyboard() {
@@ -123,6 +139,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (progressDialog != null && !progressDialog.isShowing() && !isFinishing()) {
             progressDialog.show();
         }
+    }
+
+    public void showWaitingDialog() {
+        showWaitingDialog("", false);
     }
 
     public void showWaitingDialog(String waitingMessage) {
@@ -344,5 +364,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    protected Spannable setUnderlineText(String firstHalf, String secondHalf) {
+        Spannable span = new SpannableString(firstHalf + secondHalf);
+        span.setSpan(new UnderlineSpan(), firstHalf.length(), firstHalf.length() + secondHalf.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return span;
     }
 }

@@ -3,21 +3,31 @@ package com.qedum.simplyposted.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.v4.app.FragmentTabHost;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TabHost;
 import android.widget.Toast;
 
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.android.volley.NetworkResponse;
 import com.qedum.simplyposted.R;
-import com.qedum.simplyposted.model.Post;
-import com.qedum.simplyposted.model.PostCard;
+import com.qedum.simplyposted.api.ApiCallback;
+import com.qedum.simplyposted.api.ApiClient;
+import com.qedum.simplyposted.fragment.FragmentAcceptedPosts;
+import com.qedum.simplyposted.fragment.FragmentMain;
+import com.qedum.simplyposted.model.User;
 import com.qedum.simplyposted.util.Storage;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+import okhttp3.ResponseBody;
 
-    private SwipePlaceHolderView mSwipeView;
+public class MainActivity extends BaseActivity {
+    private static final String HOME_TAB_TAG = "1";
+    private static final String ACCEPTED_POSTS_TAB_TAG = "2";
+    private FragmentTabHost tabHost;
 
     public static Intent getLaunchIntent(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -32,46 +42,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void attachActivityViews(Bundle savedInstanceState) {
-        mSwipeView = (SwipePlaceHolderView) findViewById(R.id.swipeView);
+        tabHost = (FragmentTabHost) findViewById(R.id.tabhost);
     }
 
     @Override
     protected void initActivityViews(Bundle savedInstanceState) {
-        findViewById(R.id.item_post_main_btn_skip).setOnClickListener(this);
-        findViewById(R.id.item_post_main_btn_accept).setOnClickListener(this);
-
-        mSwipeView.getBuilder()
-                .setDisplayViewCount(2)
-                .setSwipeDecor(new SwipeDecor()
-//                        .setPaddingTop(20)
-                        .setRelativeScale(0.01f)
-                        .setSwipeInMsgLayoutId(R.layout.view_post_accepted)
-                        .setSwipeOutMsgLayoutId(R.layout.view_post_rejected));
-
-
-        for (int i = 0; i < 10; i++) {
-            mSwipeView.addView(new PostCard(new Post(), mSwipeView));
-        }
+        initTabHost();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.item_post_main_btn_skip:
-                rejectPost();
+    private void initTabHost() {
+        tabHost.setup(this, getSupportFragmentManager(), android.R.id.tabcontent);
+        tabHost.addTab(createTab(HOME_TAB_TAG), FragmentMain.class, null);
+        tabHost.addTab(createTab(ACCEPTED_POSTS_TAB_TAG), FragmentAcceptedPosts.class, null);
+    }
+
+    private TabHost.TabSpec createTab(String tag) {
+        TabHost.TabSpec tabSpec = tabHost.newTabSpec(tag);
+        tabSpec.setIndicator(getTabIndicator(tag));
+        return tabSpec;
+    }
+
+    private View getTabIndicator(String tab) {
+        View view = LayoutInflater.from(this).inflate(R.layout.tabhost_menu_main, null);
+        ImageView iv = (ImageView) view.findViewById(R.id.imageView);
+        iv.setImageResource(getImageResByTag(tab));
+        return view;
+    }
+
+    @DrawableRes
+    private int getImageResByTag(String tag) {
+        int drawableId = -1;
+        switch (tag) {
+            case HOME_TAB_TAG:
+                drawableId = R.drawable.tab_selector_home;
                 break;
-            case R.id.item_post_main_btn_accept:
-                acceptPost();
+            case ACCEPTED_POSTS_TAB_TAG:
+                drawableId = R.drawable.tab_selector_accepted_posts;
                 break;
         }
-    }
-
-    private void rejectPost() {
-        mSwipeView.doSwipe(false);
-    }
-
-    private void acceptPost() {
-        mSwipeView.doSwipe(true);
+        return drawableId;
     }
 
     protected boolean isHomeAsUpEnabledShown() {
@@ -93,14 +102,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
             case R.id.action_settings:
                 startActivity(SettingsActivity.getLaunchIntent(this));
-                return true;
-
-            case R.id.action_scheduled_posts:
-                startActivity(PostsActivity.getLaunchIntent(this));
-                return true;
-
-            case R.id.action_about_share:
-                share();
                 return true;
 
             case R.id.action_logout:

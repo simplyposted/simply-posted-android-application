@@ -3,10 +3,15 @@ package com.qedum.simplyposted.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.FragmentTabHost;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qedum.simplyposted.R;
@@ -68,10 +73,16 @@ public class SettingsActivity extends BaseActivity {
 
     private TabHost.TabSpec createTab(String tag) {
         TabHost.TabSpec tabSpec = tabHost.newTabSpec(tag);
-        tabSpec.setIndicator(getResources().getString(getStringByTag(tag)));
+        tabSpec.setIndicator(getTabIndicator(tag));
         return tabSpec;
     }
 
+    private View getTabIndicator(String tab) {
+        View view = LayoutInflater.from(this).inflate(R.layout.tabhost_menu_settings, null);
+        TextView iv = (TextView) view.findViewById(R.id.textView);
+        iv.setText(getStringByTag(tab));
+        return view;
+    }
 
     private int getStringByTag(String tag) {
         int resId = -1;

@@ -1,11 +1,17 @@
 package com.qedum.simplyposted.model;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -33,6 +39,9 @@ public class PostCard {
     @View(R.id.item_post_tv_date)
     private TextView tvDate;
 
+//    @View(R.id.item_post_card_view_root)
+//    private CardView root;
+
     private Post post;
     private SwipePlaceHolderView mSwipeView;
 
@@ -43,11 +52,10 @@ public class PostCard {
 
     @Resolve
     private void onResolved() {
-        Glide.with(SpApp.getAppContext()).load(post.getImageUrl()).into(ivPost);
+        Glide.with(SpApp.getContext()).load(post.getImageUrl()).placeholder(R.drawable.logo).into(ivPost);
         tvTitle.setText(post.getTitle());
         tvLink.setText(post.getLink());
         tvDate.setText(post.getDate().toString());
-
     }
 
     @SwipeOut

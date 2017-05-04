@@ -12,6 +12,7 @@ import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.fragment.ChoosePackageFragment;
 import com.qedum.simplyposted.fragment.SettingsInformationFragment;
 import com.qedum.simplyposted.fragment.SocialNetworksFragment;
+import com.qedum.simplyposted.util.Storage;
 
 public class RegistrationFormActivity extends BaseActivity implements View.OnClickListener {
 
@@ -20,8 +21,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     private static final int STEP_PACKAGE_FRAGMENT = 2;
 
     private Button btnNext;
-    private TextView tvStep;
-    private TextView tvSkip;
+    private Button btnSkip;
     private int currentStep;
 
     public static Intent getLaunchIntent(Context context) {
@@ -36,8 +36,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     @Override
     protected void attachActivityViews(Bundle savedInstanceState) {
         btnNext = (Button) findViewById(R.id.activity_reg_form_btn_next);
-        tvStep = (TextView) findViewById(R.id.activity_reg_form_tv_step);
-        tvSkip = (TextView) findViewById(R.id.activity_reg_form_tv_skip);
+        btnSkip = (Button) findViewById(R.id.activity_reg_form_btn_skip);
 
         showSocialNetworksFragment();
     }
@@ -53,14 +52,14 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     protected void initActivityViews(Bundle savedInstanceState) {
         currentStep = STEP_SOCIAL_NETWORKS;
         btnNext.setOnClickListener(this);
-        tvSkip.setOnClickListener(this);
+        btnSkip.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_reg_form_btn_next:
-            case R.id.activity_reg_form_tv_skip:
+            case R.id.activity_reg_form_btn_skip:
                 tryShowNextScreen();
                 break;
         }
@@ -87,6 +86,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
                 break;
 
             case STEP_PACKAGE_FRAGMENT:
+                Storage.getInstance().setUserLoggedIn(true);
                 startActivity(MainActivity.getLaunchIntent(this));
                 break;
         }
@@ -95,29 +95,25 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     private void showSettingsFragment() {
         currentStep = STEP_SETTINGS_FRAGMENT;
         setStepTitle();
-
         showFragment(R.id.activity_reg_form_fl_content, new SettingsInformationFragment(), true);
     }
 
     private void showChoosePackageFragment() {
         currentStep = STEP_PACKAGE_FRAGMENT;
         setStepTitle();
-
+        btnNext.setText(R.string.activity_reg_form_btn_finish);
         showFragment(R.id.activity_reg_form_fl_content, new ChoosePackageFragment(), true);
     }
 
     private void setStepTitle() {
         switch (currentStep) {
             case STEP_SETTINGS_FRAGMENT:
-                tvStep.setText(R.string.fragment_registration_step2_text);
                 break;
 
             case STEP_PACKAGE_FRAGMENT:
-                tvStep.setText(R.string.fragment_registration_step3_text);
                 break;
 
             default:
-                tvStep.setText(R.string.fragment_registration_step1_text);
                 break;
         }
     }
@@ -126,6 +122,7 @@ public class RegistrationFormActivity extends BaseActivity implements View.OnCli
     public void onBackPressed() {
         currentStep--;
         setStepTitle();
+        btnNext.setText(R.string.activity_registration_form_btn_next_step);
         super.onBackPressed();
     }
 }

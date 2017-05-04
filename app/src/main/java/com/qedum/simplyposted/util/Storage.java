@@ -2,8 +2,11 @@ package com.qedum.simplyposted.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 
 import com.qedum.simplyposted.SpApp;
+
+import java.util.UUID;
 
 public class Storage {
     private static final int DEFAULT_CHECKBOX_VALUE = -1;
@@ -17,12 +20,14 @@ public class Storage {
     private static final String PACKAGE_KEY = "PACKAGE_KEY";
     private static final String ZIP_KEY = "ZIP_KEY";
 
+    private static final String SECRET_KEY = "secret_key";
+    private static final String PASSWORD_KEY = "password_key";
 
     private static Storage instance;
     private SharedPreferences sharedPreferences;
 
     private Storage() {
-        sharedPreferences = SpApp.getAppContext().getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
+        sharedPreferences = SpApp.getContext().getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
     public static Storage getInstance() {
@@ -101,6 +106,36 @@ public class Storage {
 
     public void setFbConnected(boolean value) {
         put(LOGGED_IN_KEY, value);
+    }
+
+    public String getPassword() {
+        return getDecryptedValueForKey(PASSWORD_KEY);
+    }
+
+    public void setPassword(String password) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(PASSWORD_KEY, (password));
+        editor.apply();
+    }
+
+    private synchronized String getDecryptedValueForKey(String key) {
+        String tmp = sharedPreferences.getString(key, "");
+        if (tmp.equals("")) {
+            return tmp;
+        } else {
+            return StringsEncryptorDecryptor.decrypt(getSecretKey(), tmp);
+        }
+    }
+
+    public synchronized String getSecretKey() {
+        String secretKey = sharedPreferences.getString(SECRET_KEY, "");
+        if (secretKey.equals("")) {
+            secretKey = UUID.randomUUID().toString();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(SECRET_KEY, secretKey);
+            editor.apply();
+        }
+        return secretKey;
     }
 
     public void clearAll() {

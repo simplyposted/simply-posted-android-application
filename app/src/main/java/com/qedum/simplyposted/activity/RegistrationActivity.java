@@ -6,9 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.api.ApiCallback;
+import com.qedum.simplyposted.api.ApiClient;
+import com.qedum.simplyposted.model.User;
+import com.qedum.simplyposted.util.StringsEncryptorDecryptor;
 import com.qedum.simplyposted.util.Validator;
+
+import okhttp3.ResponseBody;
 
 public class RegistrationActivity extends BaseActivity implements View.OnClickListener {
 
@@ -17,6 +25,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private EditText etConfirmPassword;
     private Button btnOk;
     private Button btnCancel;
+    private TextView tvSignIn;
 
     public static Intent getLaunchIntent(Context context) {
         return new Intent(context, RegistrationActivity.class);
@@ -34,19 +43,27 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         etConfirmPassword = (EditText) findViewById(R.id.activity_registration_password_confirm);
         btnOk = (Button) findViewById(R.id.activity_registration_btn_ok);
         btnCancel = (Button) findViewById(R.id.activity_registration_btn_cancel);
+        tvSignIn = (TextView) findViewById(R.id.activity_registration_tv_signin);
     }
 
     @Override
     protected void initActivityViews(Bundle savedInstanceState) {
         btnOk.setOnClickListener(this);
         btnCancel.setOnClickListener(this);
+        tvSignIn.setOnClickListener(this);
+
+        tvSignIn.setText(setUnderlineText(getString(R.string.activity_registration_tv_signin), getString(R.string.activity_registration_bottom_text2)));
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.activity_registration_tv_signin:
+                signIn();
+                break;
+
             case R.id.activity_registration_btn_ok:
-                tryOkBtn();
+                tryRegister();
                 break;
             case R.id.activity_registration_btn_cancel:
                 cancelBtn();
@@ -54,9 +71,25 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    private void tryOkBtn() {
+    private void tryRegister() {
         if (isFormValid()) {
-            startActivity(RegistrationFormActivity.getLaunchIntent(this));
+            showWaitingDialog();
+            String email = etEmail.getText().toString().trim();
+            String password = (etPassword.getText().toString().trim());
+            ApiClient.getSharedInstance().register(new User(email, password), new ApiCallback<ResponseBody>(RegistrationActivity.this) {
+                @Override
+                public void onSuccess(ResponseBody responseObject) {
+                    dismissWaitingDialog();
+                    startActivity(RegistrationFormActivity.getLaunchIntent(RegistrationActivity.this));
+                }
+
+                @Override
+                public void onFailure(String errorResponse, String rejectReason) {
+                    dismissWaitingDialog();
+                    Toast.makeText(RegistrationActivity.this, rejectReason, Toast.LENGTH_SHORT).show();
+                }
+            });
+
         }
     }
 
@@ -91,4 +124,9 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         }
         return true;
     }
+
+    private void signIn() {
+        startActivity(LoginActivity.getLaunchIntent(this));
+    }
+
 }

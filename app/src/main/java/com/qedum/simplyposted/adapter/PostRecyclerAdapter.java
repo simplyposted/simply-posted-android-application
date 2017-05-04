@@ -42,25 +42,58 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView ivImage;
         public TextView tvTitle;
-        public TextView tvLink;
+        //        public TextView tvLink;
         public TextView tvProfile;
         public TextView tvDateTime;
+        public ImageView ivArrow;
+        public View viewOpen;
+        public View viewContent;
+        private boolean isOpened;
 
         public ViewHolder(View v) {
             super(v);
             ivImage = (ImageView) v.findViewById(R.id.list_item_post_iv_image);
             tvTitle = (TextView) v.findViewById(R.id.list_item_post_tv_title);
-            tvLink = (TextView) v.findViewById(R.id.list_item_post_tv_link);
+//            tvLink = (TextView) v.findViewById(R.id.list_item_post_tv_link);
             tvProfile = (TextView) v.findViewById(R.id.list_item_post_tv_profile);
             tvDateTime = (TextView) v.findViewById(R.id.list_item_post_tv_date);
+            ivArrow = (ImageView) v.findViewById(R.id.list_item_post_arrow_open);
+            viewOpen = v.findViewById(R.id.list_item_post_ll_open);
+            viewContent = v.findViewById(R.id.list_item_post_ll_content);
         }
 
         public void bind(Post item) {
-            Glide.with(SpApp.getAppContext()).load(item.getImageUrl()).into(ivImage);
+            Glide.with(SpApp.getContext()).load(item.getImageUrl()).into(ivImage);
             this.tvTitle.setText(item.getTitle());
-            this.tvDateTime.setText("14:50 05/04/2017");
-            this.tvLink.setText("link");
-            //TODO: add real data
+            this.tvDateTime.setText("Mon, 4/1/2017, 12:00 AM");
+//            this.tvLink.setText("link");
+            showActualState();
+
+            viewOpen.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    isOpened = !isOpened;
+                    showActualState();
+                }
+            });
+        }
+
+        private void showActualState() {
+            if (isOpened) {
+                showContent();
+            } else {
+                hideContent();
+            }
+        }
+
+        private void hideContent() {
+            viewContent.setVisibility(View.GONE);
+            ivArrow.setImageResource(R.drawable.ic_arrow_down_gray);
+        }
+
+        private void showContent() {
+            viewContent.setVisibility(View.VISIBLE);
+            ivArrow.setImageResource(R.drawable.ic_arrow_up_gray);
         }
     }
 }

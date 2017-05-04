@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/action_about_share"
-        android:icon="@drawable/ic_action_navigation_share"
-        android:title="@string/menu_action_share"
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings_24px"
+        android:title="@string/menu_action_settings"
         app:showAsAction="always" />
 
     <item
@@ -14,16 +14,6 @@
         app:showAsAction="always">
 
         <menu>
-            <item
-                android:id="@+id/action_settings"
-                android:title="@string/menu_action_settings"
-                app:showAsAction="always" />
-
-            <item
-                android:id="@+id/action_scheduled_posts"
-                android:title="@string/menu_scheduled_posts"
-                app:showAsAction="never" />
-
             <item
                 android:id="@+id/action_logout"
                 android:title="@string/menu_action_logout"

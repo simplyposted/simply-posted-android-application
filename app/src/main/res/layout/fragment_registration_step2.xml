@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,167 +13,326 @@
         android:paddingRight="25dp"
         android:paddingStart="25dp">
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/fragment_registration_step2_progress"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="@string/fragment_registration_step2_business_details"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:layout_gravity="center"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
+            android:src="@drawable/step_2" />
+
 
         <EditText
             android:id="@+id/fragment_registration_step2_et_name"
+            fontPath="fonts/Roboto-Regular.ttf"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edt"
             android:hint="@string/fragment_registration_step2_et_name"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:theme="@style/EditTextRegistrationActivity" />
+
 
         <EditText
             android:id="@+id/fragment_registration_step2_et_phone"
+            fontPath="fonts/Roboto-Regular.ttf"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/bg_edt"
             android:hint="@string/fragment_registration_step2_et_phone"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:theme="@style/EditTextRegistrationActivity" />
 
         <EditText
             android:id="@+id/fragment_registration_step2_et_zipcode"
+            fontPath="fonts/Roboto-Regular.ttf"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_edt"
             android:hint="@string/fragment_registration_step2_sipzode"
-            android:inputType="" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center"
-            android:text="@string/fragment_registration_step2_business_details"
-            android:textAlignment="center" />
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:theme="@style/EditTextRegistrationActivity" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingEnd="25dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:paddingStart="25dp">
+            android:orientation="horizontal">
 
             <TextView
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/fragment_registration_step2_tv_playful" />
+                android:text="@string/fragment_registration_step2_tv_playful"
+                android:textColor="@color/textview_blue_color" />
 
             <TextView
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/fragment_registration_step2_tv_corporate"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/textview_blue_color" />
 
         </LinearLayout>
 
         <SeekBar
             android:id="@+id/fragment_registration_step2_sb_playful_corporate"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            style="@style/SeekBarWithoutSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:max="5"
-            android:progress="3" />
+            android:paddingEnd="-25dp"
+            android:paddingLeft="-25dp"
+            android:paddingRight="-25dp"
+            android:paddingStart="-25dp"
+            android:progress="3"
+            android:progressDrawable="@drawable/seekbar"
+            android:thumb="@drawable/seekbar_thumb" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingEnd="25dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:paddingStart="25dp">
+            android:orientation="horizontal">
 
             <TextView
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/fragment_registration_step2_tv_local" />
+                android:text="@string/fragment_registration_step2_tv_local"
+                android:textColor="@color/textview_blue_color" />
 
             <TextView
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/fragment_registration_step2_tv_general"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/textview_blue_color" />
 
         </LinearLayout>
 
         <SeekBar
             android:id="@+id/fragment_registration_step2_sb_local_general"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
+            style="@style/SeekBarWithoutSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:max="5"
-            android:progress="3" />
+            android:paddingEnd="-25dp"
+            android:paddingLeft="-25dp"
+            android:paddingRight="-25dp"
+            android:paddingStart="-25dp"
+
+            android:progress="3"
+            android:progressDrawable="@drawable/seekbar"
+            android:thumb="@drawable/seekbar_thumb" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:orientation="horizontal"
-            android:paddingEnd="25dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:paddingStart="25dp">
+            android:orientation="horizontal">
 
             <TextView
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/fragment_registration_step2_tv_topical" />
+                android:text="@string/fragment_registration_step2_tv_topical"
+                android:textColor="@color/textview_blue_color" />
 
             <TextView
+                fontPath="fonts/Roboto-Regular.ttf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="@string/fragment_registration_step2_tv_promotional"
-                android:textAlignment="textEnd" />
+                android:textAlignment="textEnd"
+                android:textColor="@color/textview_blue_color" />
 
         </LinearLayout>
 
         <SeekBar
             android:id="@+id/fragment_registration_step2_sb_topical_promotional"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:max="5"
-            android:progress="3" />
-
-        <com.qedum.simplyposted.view.MultiSpinner
-            android:id="@+id/fragment_registration_ms_categories"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp" />
-
-        <EditText
+            style="@style/SeekBarWithoutSteps"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:hint="@string/fragment_registration_step2_et_additional_info" />
+            android:max="5"
+            android:paddingEnd="-25dp"
+            android:paddingLeft="-25dp"
+            android:paddingRight="-25dp"
+            android:paddingStart="-25dp"
+            android:progress="3"
+            android:progressDrawable="@drawable/seekbar"
+            android:thumb="@drawable/seekbar_thumb" />
+
+        <TextView
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:text="Hobbies and Interest"
+            android:textColor="@color/textview_blue_color"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/fragment_registration_step2_et_hobbies"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_edt"
+            android:hint="Hobbies and Interest"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:theme="@style/EditTextRegistrationActivity" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/textview_blue_color" />
+
+        <TextView
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@string/fragment_registration_step2_smctext"
+            android:textColor="@color/textview_login_reg_color"
+            android:textSize="14sp" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_homeselling"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_homeselling"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_foreclosure"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_foreclosure"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_firsttimehomebuers"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_firsttimehomebuers"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_homeownership"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_homeownership"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_homebuying"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_homebuying"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_investing"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_investing"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_iamarealtor"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_iamarealtor"
+            android:textColor="@color/textview_login_reg_color" />
+
+        <CheckBox
+            android:id="@+id/fragment_registration_step2_propertymanagement"
+            fontPath="fonts/Roboto-Regular.ttf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/checkbox"
+            android:paddingBottom="@dimen/checkbox_top_bottom_padding"
+            android:paddingLeft="@dimen/checkbox_text_padding"
+            android:paddingStart="@dimen/checkbox_text_padding"
+            android:paddingTop="@dimen/checkbox_top_bottom_padding"
+            android:text="@string/fragment_registration_step2_propertymanagement"
+            android:textColor="@color/textview_login_reg_color" />
 
     </LinearLayout>
 </ScrollView>

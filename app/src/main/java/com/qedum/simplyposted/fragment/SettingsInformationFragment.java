@@ -15,7 +15,7 @@ public class SettingsInformationFragment extends BaseFragment implements MultiSp
     private EditText etName;
     private EditText etPhone;
     private EditText etZip;
-    private MultiSpinner msCategories;
+    private View imvProgress;
 
     @Override
     protected int getContentView() {
@@ -27,17 +27,18 @@ public class SettingsInformationFragment extends BaseFragment implements MultiSp
         etName = (EditText) view.findViewById(R.id.fragment_registration_step2_et_name);
         etPhone = (EditText) view.findViewById(R.id.fragment_registration_step2_et_phone);
         etZip = (EditText) view.findViewById(R.id.fragment_registration_step2_et_zipcode);
-        msCategories = (MultiSpinner) view.findViewById(R.id.fragment_registration_ms_categories);
+        imvProgress = view.findViewById(R.id.fragment_registration_step2_progress);
     }
 
     @Override
     protected void initFragmentViews() {
+        if (Storage.getInstance().isUserLoggedIn()) {
+            imvProgress.setVisibility(View.GONE);
+        }
         etName.setText(Storage.getInstance().getCompanyName());
         etPhone.setText(Storage.getInstance().getCompanyPhone());
         etZip.setText(Storage.getInstance().getZipCode());
 
-        String[] categoriesArr = getResources().getStringArray(R.array.categories);
-        msCategories.setItems(Arrays.asList(categoriesArr), getString(R.string.fragment_registration_all_categories), this);
     }
 
     public boolean isFormValid() {
