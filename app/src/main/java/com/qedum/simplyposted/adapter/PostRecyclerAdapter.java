@@ -28,7 +28,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
     }
 
     @Override
-    public PostRecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View rowView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post_list, parent, false);
         return new ViewHolder(rowView);
     }
@@ -65,7 +65,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         public void bind(Post item) {
             Glide.with(SpApp.getContext()).load(item.getImageUrl()).into(ivImage);
             this.tvTitle.setText(item.getTitle());
-            this.tvDateTime.setText("Mon, 4/1/2017, 12:00 AM");
+            this.tvDateTime.setText("Mon 4/1/2017, 12:00 AM");
 //            this.tvLink.setText("link");
             showActualState();
 

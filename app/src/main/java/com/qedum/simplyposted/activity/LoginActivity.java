@@ -3,9 +3,6 @@ package com.qedum.simplyposted.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +12,10 @@ import android.widget.Toast;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.api.ApiCallback;
 import com.qedum.simplyposted.api.ApiClient;
-import com.qedum.simplyposted.model.User;
+import com.qedum.simplyposted.model.api.LoginResponse;
+import com.qedum.simplyposted.model.api.UserResponse;
 import com.qedum.simplyposted.util.Storage;
-import com.qedum.simplyposted.util.StringsEncryptorDecryptor;
 import com.qedum.simplyposted.util.Validator;
-
-import okhttp3.ResponseBody;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -99,12 +94,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             showWaitingDialog();
             String email = etEmail.getText().toString().trim();
             String password = (etPassword.getText().toString().trim());
-            ApiClient.getSharedInstance().login(new User(email, password), new ApiCallback<ResponseBody>(LoginActivity.this) {
+            ApiClient.getSharedInstance().login(email, password, new ApiCallback<LoginResponse>(LoginActivity.this) {
                 @Override
-                public void onSuccess(ResponseBody responseObject) {
-                    dismissWaitingDialog();
+                public void onSuccess(LoginResponse responseObject) {
                     Storage.getInstance().setUserLoggedIn(true);
-                    startActivity(MainActivity.getLaunchIntent(LoginActivity.this));
+                    Storage.getInstance().setAuthToken(responseObject.getKey());
+                    getUserData();
                 }
 
                 @Override
@@ -117,7 +112,27 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
+    private void getUserData() {
+        ApiClient.getSharedInstance().getUser(new ApiCallback<UserResponse>() {
+            @Override
+            public void onSuccess(UserResponse responseObject) {
+                Storage.getInstance().setUser(responseObject);
+                dismissWaitingDialog();
+                startActivity(MainActivity.getLaunchIntent(LoginActivity.this));
+            }
+
+            @Override
+            public void onFailure(String errorResponse, String rejectReason) {
+                dismissWaitingDialog();
+                Storage.getInstance().clearAll();
+                Toast.makeText(LoginActivity.this, rejectReason, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void createAccount() {
         startActivity(RegistrationActivity.getLaunchIntent(this));
     }
+
+
 }

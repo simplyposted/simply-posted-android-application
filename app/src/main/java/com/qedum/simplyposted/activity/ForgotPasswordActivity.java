@@ -7,10 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.api.ApiCallback;
+import com.qedum.simplyposted.api.ApiClient;
+import com.qedum.simplyposted.model.api.UserResponse;
 import com.qedum.simplyposted.util.Storage;
 import com.qedum.simplyposted.util.Validator;
+
+import okhttp3.ResponseBody;
 
 public class ForgotPasswordActivity extends BaseActivity implements View.OnClickListener {
 
@@ -73,8 +79,22 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
 
     private void tryLogin() {
         if (isFormValid()) {
-            //TODO:
-            startActivity(LoginActivity.getLaunchIntent(this));
+            showWaitingDialog();
+            ApiClient.getSharedInstance().resetPassword(etEmail.getText().toString().trim(), new ApiCallback<ResponseBody>(this) {
+                @Override
+                public void onSuccess(ResponseBody responseObject) {
+                    dismissWaitingDialog();
+                    Toast.makeText(ForgotPasswordActivity.this, getResources().getString(R.string.activity_forgot_alert_success), Toast.LENGTH_SHORT).show();
+                    startActivity(LoginActivity.getLaunchIntent(ForgotPasswordActivity.this));
+                    finish();
+                }
+
+                @Override
+                public void onFailure(String errorResponse, String rejectReason) {
+                    dismissWaitingDialog();
+                    Toast.makeText(ForgotPasswordActivity.this, rejectReason, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.qedum.simplyposted.api;
 
 import android.content.Context;
-import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -9,7 +8,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.SpApp;
-import com.qedum.simplyposted.model.User;
+import com.qedum.simplyposted.model.SchedulePost;
+import com.qedum.simplyposted.model.api.LoginResponse;
+import com.qedum.simplyposted.model.api.PostResponse;
+import com.qedum.simplyposted.model.api.UserResponse;
+import com.qedum.simplyposted.util.Storage;
+
+import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -66,13 +71,39 @@ public class ApiClient {
         return activeNetwork != null && activeNetwork.isConnected();
     }
 
-    public void register(User user, ApiCallback<ResponseBody> callback) {
-        Call<ResponseBody> call = profileApiService.register(user.getEmail(), user.getEmail(), user.getPassword());
+    public void register(String email, String password, ApiCallback<ResponseBody> callback) {
+        Call<ResponseBody> call = profileApiService.register(email, email, password);
         call.enqueue(new DefaultApiListener<ResponseBody>(callback));
     }
 
-    public void login(User user, ApiCallback<ResponseBody> callback) {
-        Call<ResponseBody> call = profileApiService.login(user.getEmail(), user.getEmail(), user.getPassword());
+    public void login(String email, String password, ApiCallback<LoginResponse> callback) {
+        Call<LoginResponse> call = profileApiService.login(email, email, password);
+        call.enqueue(new DefaultApiListener<LoginResponse>(callback));
+    }
+
+
+    public void getPosts(ApiCallback<List<PostResponse>> callback) {
+        Call<List<PostResponse>> call = profileApiService.getPosts(Storage.getInstance().getAuthToken(), Storage.getInstance().getUser().getId().toString());
+        call.enqueue(new DefaultApiListener<List<PostResponse>>(callback));
+    }
+
+    public void getUser(ApiCallback<UserResponse> callback) {
+        Call<UserResponse> call = profileApiService.getUser(Storage.getInstance().getAuthToken());
+        call.enqueue(new DefaultApiListener<UserResponse>(callback));
+    }
+
+    public void resetPassword(String email, ApiCallback<ResponseBody> callback) {
+        Call<ResponseBody> call = profileApiService.resetPassword(email);
         call.enqueue(new DefaultApiListener<ResponseBody>(callback));
+    }
+
+    public void logout(ApiCallback<ResponseBody> callback) {
+        Call<ResponseBody> call = profileApiService.logout(Storage.getInstance().getAuthToken());
+        call.enqueue(new DefaultApiListener<ResponseBody>(callback));
+    }
+
+    public void addPost(Long postId, long userId, String publicationDate, ApiCallback<SchedulePost> callback) {
+        Call<SchedulePost> call = profileApiService.addPost(Storage.getInstance().getAuthToken(), postId, userId, publicationDate);
+        call.enqueue(new DefaultApiListener<SchedulePost>(callback));
     }
 }

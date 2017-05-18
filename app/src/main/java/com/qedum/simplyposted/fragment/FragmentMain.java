@@ -3,18 +3,26 @@ package com.qedum.simplyposted.fragment;
 import android.graphics.Point;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.qedum.simplyposted.R;
+import com.qedum.simplyposted.api.ApiCallback;
+import com.qedum.simplyposted.api.ApiClient;
 import com.qedum.simplyposted.model.Post;
-import com.qedum.simplyposted.model.PostCard;
+import com.qedum.simplyposted.adapter.model.PostCard;
+import com.qedum.simplyposted.model.SchedulePost;
+import com.qedum.simplyposted.model.api.PostResponse;
 import com.qedum.simplyposted.util.ScreenUtil;
+import com.qedum.simplyposted.util.Storage;
+
+import java.util.List;
 
 /**
  * Created by bogdan.aksonenko on 4/20/17.
  */
-public class FragmentMain extends BaseFragment implements View.OnClickListener {
+public class FragmentMain extends BaseFragment implements View.OnClickListener, PostCard.PostPositionListener {
     private SwipePlaceHolderView mSwipeView;
 
     @Override
@@ -49,11 +57,28 @@ public class FragmentMain extends BaseFragment implements View.OnClickListener {
 //                        .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.view_post_accepted)
                         .setSwipeOutMsgLayoutId(R.layout.view_post_rejected));
-//        mSwipeView.set
 
-        for (int i = 0; i < 10; i++) {
-            mSwipeView.addView(new PostCard(new Post(), mSwipeView));
-        }
+        loadPosts();
+
+    }
+
+    private void loadPosts() {
+        showWaitingDialog("");
+        ApiClient.getSharedInstance().getPosts(new ApiCallback<List<PostResponse>>(this) {
+            @Override
+            public void onSuccess(List<PostResponse> responseObject) {
+                dismissWaitingDialog();
+                for (PostResponse pr : responseObject) {
+                    mSwipeView.addView(new PostCard(new Post(pr), mSwipeView, FragmentMain.this));
+                }
+            }
+
+            @Override
+            public void onFailure(String errorResponse, String rejectReason) {
+                dismissWaitingDialog();
+            }
+        });
+
     }
 
     @Override
@@ -77,4 +102,18 @@ public class FragmentMain extends BaseFragment implements View.OnClickListener {
     }
 
 
+    @Override
+    public void onSwipe(Post post) {
+        ApiClient.getSharedInstance().addPost(post.getId(), Storage.getInstance().getUser().getId(), "2017-05-29T16:24:22.795799+05:30", new ApiCallback<SchedulePost>(this) {
+            @Override
+            public void onSuccess(SchedulePost responseObject) {
+                Toast.makeText(FragmentMain.this.getActivity(), "Added ", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(String errorResponse, String rejectReason) {
+                Toast.makeText(FragmentMain.this.getActivity(), "Server Error: " + rejectReason, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="api_url">https://work-2.yehor.net/</string>
+    <string name="api_url">http://simplyposted.net/</string>
     <string name="app_name">SimplyPosted</string>
     <string name="skip">Skip</string>
     <string name="email">Email</string>
@@ -118,5 +118,6 @@
     <string name="activity_forgot_bt_send">Send email</string>
     <string name="activity_forgot_hint_email">@string/email</string>
     <string name="activity_forgot_tv_login">Back to login</string>
+    <string name="activity_forgot_alert_success">Password reset e-mail has been sent</string>
 
 </resources>

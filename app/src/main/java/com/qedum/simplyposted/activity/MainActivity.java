@@ -13,14 +13,17 @@ import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.api.ApiCallback;
 import com.qedum.simplyposted.api.ApiClient;
 import com.qedum.simplyposted.fragment.FragmentAcceptedPosts;
 import com.qedum.simplyposted.fragment.FragmentMain;
-import com.qedum.simplyposted.model.User;
+import com.qedum.simplyposted.model.Post;
+import com.qedum.simplyposted.model.api.PostResponse;
 import com.qedum.simplyposted.util.Storage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.ResponseBody;
 
@@ -129,8 +132,21 @@ public class MainActivity extends BaseActivity {
     }
 
     private void logout() {
-        Storage.getInstance().clearAll();
-        startActivity(LoginActivity.getLaunchIntent(this));
-        finish();
+        showWaitingDialog();
+        ApiClient.getSharedInstance().logout(new ApiCallback<ResponseBody>() {
+            @Override
+            public void onSuccess(ResponseBody responseObject) {
+                dismissWaitingDialog();
+                Storage.getInstance().clearAll();
+                startActivity(LoginActivity.getLaunchIntent(MainActivity.this));
+                finish();
+            }
+
+            @Override
+            public void onFailure(String errorResponse, String rejectReason) {
+                dismissWaitingDialog();
+                Toast.makeText(MainActivity.this, rejectReason, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

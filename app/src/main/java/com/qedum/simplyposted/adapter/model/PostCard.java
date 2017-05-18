@@ -1,17 +1,10 @@
-package com.qedum.simplyposted.model;
+package com.qedum.simplyposted.adapter.model;
 
-import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.util.Log;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -23,6 +16,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.SpApp;
+import com.qedum.simplyposted.model.Post;
 
 @Layout(R.layout.item_post_card_view)
 public class PostCard {
@@ -44,17 +38,19 @@ public class PostCard {
 
     private Post post;
     private SwipePlaceHolderView mSwipeView;
+    private PostPositionListener listener;
 
-    public PostCard(Post item, SwipePlaceHolderView swipeView) {
-        post = item;
-        mSwipeView = swipeView;
+    public PostCard(Post item, SwipePlaceHolderView swipeView, PostPositionListener listener) {
+        this.post = item;
+        this.mSwipeView = swipeView;
+        this.listener = listener;
     }
 
     @Resolve
     private void onResolved() {
         Glide.with(SpApp.getContext()).load(post.getImageUrl()).placeholder(R.drawable.logo).into(ivPost);
         tvTitle.setText(post.getTitle());
-        tvLink.setText(post.getLink());
+        tvLink.setText("Facebook, twitter");//post.getLink()
         tvDate.setText(post.getDate().toString());
     }
 
@@ -71,6 +67,7 @@ public class PostCard {
 
     @SwipeIn
     private void onSwipeIn() {
+        listener.onSwipe(post);
         Log.d("EVENT", "onSwipedIn");
     }
 
@@ -82,6 +79,10 @@ public class PostCard {
     @SwipeOutState
     private void onSwipeOutState() {
         Log.d("EVENT", "onSwipeOutState");
+    }
+
+    public interface PostPositionListener {
+        void onSwipe(Post post);
     }
 
     //https://blog.mindorks.com/android-tinder-swipe-view-example-3eca9b0d4794

@@ -65,7 +65,6 @@
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingStart="10dp"
-                    android:text="Mon, 4/1/2017, 12:00 AM"
                     android:textColor="@color/text_color"
                     android:textSize="14sp"
                     android:textStyle="normal" />

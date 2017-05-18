@@ -12,8 +12,7 @@ import android.widget.Toast;
 import com.qedum.simplyposted.R;
 import com.qedum.simplyposted.api.ApiCallback;
 import com.qedum.simplyposted.api.ApiClient;
-import com.qedum.simplyposted.model.User;
-import com.qedum.simplyposted.util.StringsEncryptorDecryptor;
+import com.qedum.simplyposted.model.api.LoginResponse;
 import com.qedum.simplyposted.util.Validator;
 
 import okhttp3.ResponseBody;
@@ -59,7 +58,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.activity_registration_tv_signin:
-                signIn();
+                logIn();
                 break;
 
             case R.id.activity_registration_btn_ok:
@@ -76,11 +75,10 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             showWaitingDialog();
             String email = etEmail.getText().toString().trim();
             String password = (etPassword.getText().toString().trim());
-            ApiClient.getSharedInstance().register(new User(email, password), new ApiCallback<ResponseBody>(RegistrationActivity.this) {
+            ApiClient.getSharedInstance().register(email, password, new ApiCallback<ResponseBody>(RegistrationActivity.this) {
                 @Override
                 public void onSuccess(ResponseBody responseObject) {
-                    dismissWaitingDialog();
-                    startActivity(RegistrationFormActivity.getLaunchIntent(RegistrationActivity.this));
+                    tryLogin();
                 }
 
                 @Override
@@ -91,6 +89,22 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             });
 
         }
+    }
+
+    private void tryLogin() {
+        ApiClient.getSharedInstance().login(etEmail.getText().toString().trim(), etPassword.getText().toString().trim(), new ApiCallback<LoginResponse>() {
+            @Override
+            public void onSuccess(LoginResponse responseObject) {
+                dismissWaitingDialog();
+                startActivity(RegistrationFormActivity.getLaunchIntent(RegistrationActivity.this));
+            }
+
+            @Override
+            public void onFailure(String errorResponse, String rejectReason) {
+                Toast.makeText(RegistrationActivity.this, "Server error: " + rejectReason, Toast.LENGTH_SHORT).show();
+                dismissWaitingDialog();
+            }
+        });
     }
 
     private void cancelBtn() {
@@ -125,7 +139,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         return true;
     }
 
-    private void signIn() {
+    private void logIn() {
         startActivity(LoginActivity.getLaunchIntent(this));
     }
 

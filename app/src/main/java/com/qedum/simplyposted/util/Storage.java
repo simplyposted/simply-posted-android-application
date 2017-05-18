@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
 
+import com.google.gson.Gson;
 import com.qedum.simplyposted.SpApp;
+import com.qedum.simplyposted.model.api.UserResponse;
 
 import java.util.UUID;
 
@@ -22,6 +24,9 @@ public class Storage {
 
     private static final String SECRET_KEY = "secret_key";
     private static final String PASSWORD_KEY = "password_key";
+    private static final String AUTH_TOKEN_KEY = "AUTH_TOKEN_KEY";
+    private static final String AUTH_TOKEN_VALUE = "Token %s";
+    private static final String KEY_USER = "key_user";
 
     private static Storage instance;
     private SharedPreferences sharedPreferences;
@@ -143,4 +148,30 @@ public class Storage {
         editor.clear();
         editor.apply();
     }
+
+    public String getAuthToken() {
+        return sharedPreferences.getString(AUTH_TOKEN_KEY, "");
+    }
+
+    public void setAuthToken(String authToken) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(AUTH_TOKEN_KEY, String.format(AUTH_TOKEN_VALUE, authToken));
+        editor.apply();
+    }
+
+    public void setUser(UserResponse value) {
+        Gson gson = new Gson();
+        String json = gson.toJson(value);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(KEY_USER, json);
+        editor.apply();
+    }
+
+    public UserResponse getUser() {
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString(KEY_USER, EMPTY_STRING);
+        UserResponse profile = gson.fromJson(json, UserResponse.class);
+        return profile;
+    }
+
 }
